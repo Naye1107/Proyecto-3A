@@ -1,5 +1,7 @@
-main{
-    background-color: dimgrey;
+body{
+    background-color: rgb(10, 10, 14);
+    font-family: 'Spartan', sans-serif;
+    font-weight: 300;
 }
 .logo{
     height: 3.5rem;
