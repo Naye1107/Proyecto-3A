@@ -5,19 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link  rel="icon"   href="/assets/img/Kninos.png" type="image/png" />
     <!-- Codigo de bustrap y el css -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-    <link href="/assets/css/css/registro.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/css/registro.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
     <title>Registro</title>
   </head>
   <body>
+       <!-- barra de navegacion -->
+    <header>   
+        <div class="container-expand-lg">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img class="logo img-fluid rounded" src="/assets/img/Kninos.png" alt="Kninos">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Ultimas Noticias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/pages/log.html">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- Fin de la barra de navegacion -->
+
    <section class="contact-box">
        <div class="row no-gutters bg-dark">
            <div class="col-xl-5 col-lg-12 register-bg">
             <div class="position-absolute testiomonial p-4">
-                <h3 class="font-weight-bold text-light">Crear una cuenta es fácil y rápido</h3>
-                <p class="lead text-light">Ya verás que sí</p>
             </div>
            </div>
            <div class="col-xl-7 col-lg-12 d-flex">
@@ -57,6 +84,6 @@
            </div>
        </div>
    </section>
-   
+   <script src="/assets/libs/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
