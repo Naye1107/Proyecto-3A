@@ -1,6 +1,5 @@
 main{
-    background-image: url("/assets/img/FondoP.png");
-    background-size: cover;
+    background-color: dimgrey;
 }
 .logo{
     height: 3.5rem;

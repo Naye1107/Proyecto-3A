@@ -7,7 +7,7 @@
     <title>Criadores</title>
     <link rel="shortcut icon" type="image/png" href="/assets/img/Kninos.png"/>
     <link rel="stylesheet" href="/assets/libs/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
 </head>
 <body>
     <header>   
@@ -38,10 +38,10 @@
         </div>
     </header>
     <main>
-        <div class="container">
+        <div class="container-fluid align-content-center my-4">
             <div class="row">
-                <div class="col-3 m-3">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-white my-5">
+                <div class="col-3 me-3 ms-3">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
                         <div class="container">
                             <div class="navbar">
                                 <ul class="navbar-nav">
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                     </nav>
-                    <nav class="navbar navbar-light bg-white my-5">
+                    <nav class="navbar navbar-dark bg-dark my-5">
                         <div class="container">
                             <div class="navbar">
                                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -76,20 +76,8 @@
                         </div>
                     </nav>
                 </div>
-                <div class="col-3 m-3">
-                    <form action="#">
-                        <div class="py-5">
-                            <label for="logotipo" class="form-label">Logotipo</label>
-                            <input class="form-select" type="file" name="logotipo" value="image/png, image/jpeg">
-                        </div>
-                        <div class="py-5">
-                            <label for="fotografia" class="form-label">fotografia</label>
-                            <input class="form-select" type="file" name="fotografia" value="image/png, image/jpeg">
-                        </div>
-                    </form>
-                </div>
-                <div class="col-4 m-3">
-                    <h3 class="text-center fw-bold py-5">Criadores</h3>
+                <div class="col-5 me-3 ms-3 bg-dark text-white-50">
+                    <h3 class="text-center fw-bold py-5 text-white">Criadores</h3>
                     <form action="#">
                         <div class="mb-4">
                             <label for="nombre" class="form-label">Nombre</label>
@@ -104,7 +92,7 @@
                             <input type="text" class="form-control" name="direccion">
                         </div>
                     </form>
-                    <h3 class="text-center fw-bold py-5">informacion Adicional</h3>
+                    <h3 class="text-center fw-bold py-5 text-white">informacion Adicional</h3>
                     <form action="#">
                         <div class="mb-4">
                             <label for="facebook" class="form-label">Facebook</label>
@@ -120,16 +108,29 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="text-end">
-                <form action="#">
-                    <input class="m-lg-2" type="button" value="buscar criador">
-                    <input class="m-lg-2" type="button" value="agergar criador">
-                    <input class="m-lg-2" type="button" value="modificar criador">
-                    <input class="m-lg-2" type="button" value="borrar criador">
-                </form>
+                <div class="col-3 me-3 ms-3 bg-dark text-white-50">
+                    <form action="#">
+                        <h3 class="text-center fw-bold py-5 text-white">Imagenes</h3>
+                        <div class="pb-5">
+                            <label for="logotipo" class="form-label">Logotipo</label>
+                            <input class="form-select" type="file" name="logotipo" value="image/png, image/jpeg">
+                        </div>
+                        <div class="py-5">
+                            <label for="fotografia" class="form-label">Fotografia</label>
+                            <input class="form-select" type="file" name="fotografia" value="image/png, image/jpeg">
+                        </div>
+                    </form>
+                </div>
+                <div class="container-fluid align-content-end mt-4">
+                    <div class="text-end">
+                        <form action="#">
+                            <input class="m-2" type="button" value="buscar criador">
+                            <input class="m-2" type="button" value="agergar criador">
+                            <input class="m-2" type="button" value="modificar criador">
+                            <input class="m-4" type="button" value="borrar criador">
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
