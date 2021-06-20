@@ -6,24 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/diseño.css">
     <link rel="icon" href="/assets/img/Kninos.png" type="image/png"/>
-    <link rel="imagen" href="/assets/img/perro2.jpg">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/libs/bootstrap/css/bootstrap.min.css">
     <title>Kninos</title>
 </head>
 <body>
-    <header class="header">
-        <div id="encabezado"> 
-            <div id="logo">
-                Kninos
-            </div>
-            <div id="menu">
-                <ul>
-                    <li><a href="" class="activate">Login</a></li>
-                    <li><a href="" class="enlace"> Criadores </a></li>
-                    <li><a href="" class="enlace"> Cruces </a></li>
-                    <li><a href="" class="enlace"> Ejemplares </a></li>
-                    <li><a href="" class="enlace"> Arbol genealogico </a></li>
-                 </ul>
-            </div>
+    <header>   
+        <div class="container-expand-lg">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img class="logo img-fluid rounded" src="/assets/img/Kninos.png" alt="Kninos">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Ultimas Noticias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/pages/log.html">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
     </header>
     <section id="principal">
@@ -31,7 +43,7 @@
             <article class="post">
                <a href="" class="enlace">
                    <h2 class="titulo-post">Adopta a un animal</h2> 
-            </a>
+                 </a>
                 <img src="/assets/img/perro2.jpg" class="img-post">
                 <p class="parrafo-post">
                     Le estarás dando a un animal una segunda oportunidad, en algún caso la primera, para encontrar un hogar y tener una vida digna y feliz. La solución a esta problemática está en la educación de la sociedad, en fomentar una cultura de adopción y esterilización para los animales de compañía
@@ -72,5 +84,6 @@
 
         </section>
     </section>
+    <script src="/assets/libs/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
