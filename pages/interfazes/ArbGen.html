@@ -6,7 +6,7 @@
     <!-- links de bustrap -->
     <link rel="stylesheet" href="/assets/libs/bootstrap/css/bootstrap.min.css">
     <link  rel="icon"   href="/assets/img/Kninos.png" type="image/png" />
-    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
     <link rel="stylesheet" href="/assets/css/ArbGen.css">
     <title>Kninos</title>
 </head>
@@ -42,78 +42,120 @@
 </header>
 <!-- Fin de la barra de navegacion -->
 
-<h1 class="text-white text-center ">Árbol Genealogico</h1> 
-
-<!-- Inicio del codigo para el arbol genealogico -->
-<div class="contairner bg-dark">
-    <table class="table text-white text-center">
-        <tr class="active text-white">
-            <th>Foto</th>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>(Raza)</th>
-            <th>Padre</th>
-            <th>(Raza)</th>
-            <th>Madre</th>
-            <th>(Raza)</th>
-        </tr>
- 
-        <tr>
-            <th class="img"><img src="/assets/img/ArbGen/2.jpg" alt="image/png"></th>
-            <th>1</th>
-            <td>Spike</td>
-            <td>Mestizo</td>
-            <td>Max</td>
-            <td>Mestizo</td>
-            <td>Mimí</td>
-            <td>Mestizo</td>
-        </tr>
-
-        <tr>
-            <th class="img"><img src="/assets/img/ArbGen/1.jpg" alt="image/png"></th>
-            <th>2</th>
-            <td>Finnn</td>
-            <td>Maltes</td>
-            <td>Bobby</td>
-            <td>Maltes</td>
-            <td>Lisa</td>
-            <td>Maltes</td>
-        </tr>
-
-        <tr>
-            <th class="img"><img src="/assets/img/ArbGen/3.jpg" alt="image/png"></th>
-            <th>3</th>
-            <td>Taizon</td>
-            <td>Mestizo</td>
-            <td>Pancho</td>
-            <td>Mestizo</td>
-            <td>Danny</td>
-            <td>Mestiza</td>
-        </tr>
-
-        <tr>
-            <th class="img"><img src="/assets/img/ArbGen/4.jpg" alt="image/png"></th>
-            <th>4</th>
-            <td>Boby</td>
-            <td>Maltes</td>
-            <td>Jake</td>
-            <td>Maltes</td>
-            <td>Maggie</td>
-            <td>Maltes</td>
-        </tr>
-
-        <tr>
-            <th class="img"><img src="/assets/img/ArbGen/5.jpg" alt="image/png"></th>
-            <th>5</th>
-            <td>Zeus</td>
-            <td>Rottweiler</td>
-            <td>Ares</td>
-            <td>Rottweiler</td>
-            <td>Atenea</td>
-            <td>Rottweiler</td>
-        </tr>
-
-    </table>
+<div class="container-fluid align-content-center my-4">
+    <div class="row">
+        <div class="col-3 me-3 ms-3">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+                <div class="container">
+                    <div class="navbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Adminitrador</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/pages/interfazes/cruces.html">Arbol Genealogico</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <nav class="navbar navbar-dark bg-dark my-5">
+                <div class="container">
+                    <div class="navbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/pages/interfazes/criadores.html">Criadores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/pages/interfazes/ejemplares.html">Ejemplares</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/pages/interfazes/cruces.html">Cruces</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/pages/interfazes/ArbGen.html">Arbol Genealogico</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Inicio del codigo para el arbol genealogico -->
+        <div class="col ms-3 me-3">
+            <div class="row bg-dark">
+                <h1 class="text-white text-center py-5">Árbol Genealogico</h1> 
+                <div class="col ms-3 me-3">
+                    <table class="table table-dark table-striped text-white text-center">
+                        <tr class="active text-white">
+                            <th>Foto</th>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>(Raza)</th>
+                            <th>Padre</th>
+                            <th>(Raza)</th>
+                            <th>Madre</th>
+                            <th>(Raza)</th>
+                        </tr>
+                 
+                        <tr>
+                            <th><img class="img rounded mx-auto d-block" src="/assets/img/ArbGen/2.jpg" alt="image/png"></th>
+                            <th>1</th>
+                            <td>Spike</td>
+                            <td>Mestizo</td>
+                            <td>Max</td>
+                            <td>Mestizo</td>
+                            <td>Mimí</td>
+                            <td>Mestizo</td>
+                        </tr>
+                
+                        <tr>
+                            <th><img class="img rounded mx-auto d-block" src="/assets/img/ArbGen/1.jpg" alt="image/png"></th>
+                            <th>2</th>
+                            <td>Finnn</td>
+                            <td>Maltes</td>
+                            <td>Bobby</td>
+                            <td>Maltes</td>
+                            <td>Lisa</td>
+                            <td>Maltes</td>
+                        </tr>
+                
+                        <tr>
+                            <th><img class="img rounded mx-auto d-block" src="/assets/img/ArbGen/3.jpg" alt="image/png"></th>
+                            <th>3</th>
+                            <td>Taizon</td>
+                            <td>Mestizo</td>
+                            <td>Pancho</td>
+                            <td>Mestizo</td>
+                            <td>Danny</td>
+                            <td>Mestiza</td>
+                        </tr>
+                
+                        <tr>
+                            <th><img class="img rounded mx-auto d-block" src="/assets/img/ArbGen/4.jpg" alt="image/png"></th>
+                            <th>4</th>
+                            <td>Boby</td>
+                            <td>Maltes</td>
+                            <td>Jake</td>
+                            <td>Maltes</td>
+                            <td>Maggie</td>
+                            <td>Maltes</td>
+                        </tr>
+                
+                        <tr>
+                            <th><img class="img rounded mx-auto d-block" src="/assets/img/ArbGen/5.jpg" alt="image/png"></th>
+                            <th>5</th>
+                            <td>Zeus</td>
+                            <td>Rottweiler</td>
+                            <td>Ares</td>
+                            <td>Rottweiler</td>
+                            <td>Atenea</td>
+                            <td>Rottweiler</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- Fin del codigo para el arbol genealogico -->
 
