@@ -30,13 +30,13 @@ body {
 }
 
 .img-1 {
-  background-image: url('/assets/img/perroN.jpg');
+  background-image: url('../img/perroN.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .img-2 {
-  background-image: url('/assets/img/perroN2.jpg');
+  background-image: url('../img/perroN2.jpg');
   background-size: cover;
   background-position: center;
 }
