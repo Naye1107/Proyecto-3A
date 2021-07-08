@@ -38,3 +38,5 @@ D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\ref\ka
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\kaninos.pdb
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\kaninos.genruntimeconfig.cache
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\kaninos.csproj.CopyComplete
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Kaninos\Index.cshtml.g.cs
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Template\_adminLayout.cshtml.g.cs
