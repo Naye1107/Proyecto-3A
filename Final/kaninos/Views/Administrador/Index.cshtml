@@ -1,0 +1,93 @@
+@{
+    ViewBag.Title = "Administrador";
+}
+        <div class="container-fluid align-content-center my-4">
+            <div class="row">
+                <div class="col-3 me-3 ms-3">
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+                        <div class="container">
+                            <div class="navbar">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" asp-controller="Administrador" asp-action="Index">Adminitrador</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <nav class="navbar navbar-dark bg-dark my-5">
+                        <div class="container">
+                            <div class="navbar">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#criadores">Criadores</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#ejemplares">Ejemplares</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#cruces">Cruces</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#arbol_gen">Arbol Genealogico</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col">
+                    <div class="container bg-dark text-white mb-4" id="criadores">
+                        <h1 class="mb-4 pt-2">Criadores</h1>
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="img-admin rounded mx-auto d-block" src="~/image/Criadores.jpeg" alt="criadores">
+                            </div>
+                            <div class="col text-justify">
+                                <p>Unete a esta Gran comunidad, registra y revisa los datos de los criadores que pertenecen a esta gran familia Knina</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary my-4" asp-controller="Administrador" asp-action="Criadores">Entrar</a>
+                    </div>
+                    <div class="container bg-dark text-white my-4" id="ejemplares">
+                        <h1 class="my-4 pt-2">Ejemplares</h1>
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="img-admin rounded mx-auto d-block" src="~/image/Ejemplares.jpg" alt="ejemplar">
+                            </div>
+                            <div class="col text-justify">
+                                <p>Permitenos saber mas sobre tu mejor amigo, en seccion que te permitira registara los datos de todos tus knes</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary my-4" asp-controller="Administrador" asp-action="Ejemplares">Entrar</a>
+                    </div>
+                    <div class="container bg-dark text-white my-4" id="cruces">
+                        <h1 class="my-4 pt-2">Cruces</h1>
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="img-admin rounded mx-auto d-block" src="~/image/Cruces.jpg" alt="cruces">
+                            </div>
+                            <div class="col text-justify">
+                                <p>Veamos cuanstos corazones rotos a dejan atras tus knes, aqui podras registrar los cruces que realizes asi como las crias engendren tus knes</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary my-4" asp-controller="Administrador" asp-action="Cruces">Entrar</a>
+                    </div>
+                    <div class="container bg-dark text-white my-4" id="arbol_gen">
+                        <h1 class="my-4 pt-2">Arbol Genealogico</h1>
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="img-admin rounded mx-auto d-block" src="~/image/ArbolGenealogico.jpg" alt="Arbol Genealogico">
+                            </div>
+                            <div class="col text-justify">
+                                <p>Has un recorrido por las generaciones de tu familia Knina. revisa la genealogia de tus knes</p>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary my-4" asp-controller="Administrador" asp-action="ArbolGen">Entrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>

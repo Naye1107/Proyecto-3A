@@ -1,0 +1,81 @@
+@{
+    ViewBag.Title = "Cruces";
+    Layout ="~/Views/Template/_adminLayout.cshtml";
+}
+                <div class="col mx-3">
+                    <div class="row">
+                        <div class="col mx-3 bg-dark text-white-50">
+                            <h3 class="text-center fw-bold py-5 bg-dark text-white">@ViewData["Title"]</h3>
+                            <form action="#">
+                                <div class="mb-4">
+                                    <label for="nombre" class="form-label">Nombre Del Cruce</label>
+                                    <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50">
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <input class="form-control me-2" type="search" placeholder="Macho" aria-label="Search">
+                                    </div>
+                                    <div class="col-6">
+                                        <input class="form-control me-2" type="search" placeholder="Hembra" aria-label="Search">
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="fecha_emp" class="form-label">Fecha de Emparejamiento</label>
+                                    <input type="date" class="form-control" name="fecha_emp" id="fecha_emp">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="fecha_nac" class="form-label">Fecha Nacimiento</label>
+                                    <input type="date" class="form-control" name="fecha_nac" id="fecha_nac">
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-3">
+                                        <label for="ejemplares_nac" class="form-label">Ejemplares Nacidos</label>
+                                        <input type="number" class="form-control" name="ejemplares_nac" id="ejemplares_nac" min="1" max="20" value="1">
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="cantidad_machos" class="form-label">Cantidad de Machos</label>
+                                        <input type="number" class="form-control" name="cantidad_machos" id="cantidad_machos" min="0" max="20" value="0">
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="cantidad_hembras" class="form-label">Cantidad de Hembras</label>
+                                        <input type="number" class="form-control" name="cantidad_hembras" id="cantidad_hembras" min="0" max="20" value="0">
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="num_bajas" class="form-label">Numero de Bajas</label>
+                                        <input type="number" class="form-control" name="num_bajas" id="num_bajas" min="0" max="20" value="0">
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <input class="form-control me-2" type="search" placeholder="Criador" aria-label="Search">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="container-fluid align-content-end mt-4">
+                            <div class="text-end">
+                                <form action="#">
+                                    <input class="btn btn-secondary m-2" type="button" value="Buscar Cruces">
+                                    <input class="btn btn-success m-2" type="button" value="Agergar Cruces">
+                                    <input class="btn btn-primary m-2" type="button" value="Modificar Cruces">
+                                    <input class="btn btn-danger ms-2 me-1" type="button" value="Borrar Cruces">
+                                </form>
+                            </div>
+                            <table class="table table-dark table-striped text-center mt-4">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Datos del Cruce</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>

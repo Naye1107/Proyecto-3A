@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"] - Kninos</title>
-    <link rel="shortcut icon" type="image/png" href="~/img/Kninos.png"/>
+    <link rel="shortcut icon" href="~/image/Kninos.png" type="image/png"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css"/>
 </head>
@@ -14,16 +14,16 @@
         <div class="container-expand-lg">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" asp-controller="kaninos" asp-action="Index">
-                        <img class="logo img-fluid rounded" src=" ~/img/Kninos.png" alt="Kninos">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                        <img class="logo img-fluid rounded" src="~/image/Kninos.png" alt="Kninos">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav ml-auto mb-2">
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="kaninos" asp-action="Index">Home</a>
+                                <a class="nav-link active" aria-current="page" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" >Ultimas Noticias</a>
@@ -38,18 +38,18 @@
         </div>
     </header>
     <main>
-        <div class="container-fluid align-content-center my-4">
+        <div class="container-fluid my-4">
             <div class="row">
-                <div class="col-3 me-3 ms-3">
+                <div class="col-3 mx-3">
                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
                         <div class="container">
                             <div class="navbar">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link">Adminitrador</a>
+                                        <a class="nav-link" asp-controller="Administrador" asp-action="Index">Adminitrador</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link">Ejemplares</a>
+                                        <a class="nav-link active" aria-current="page" href="#">@ViewData["Title"]</a>
                                     </li>
                                 </ul>
                             </div>
@@ -60,16 +60,16 @@
                             <div class="navbar">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link">Criadores</a>
+                                        <a class="nav-link" asp-controller="Administrador" asp-action="Criadores">Criadores</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link">Ejemplares</a>
+                                        <a class="nav-link" asp-controller="Administrador" asp-action="Ejemplares">Ejemplares</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link">Cruces</a>
+                                        <a class="nav-link" asp-controller="Administrador" asp-action="Cruces">Cruces</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link">Arbol Genealogico</a>
+                                        <a class="nav-link" asp-controller="Administrador" asp-action="ArbolGen">Arbol Genealogico</a>
                                     </li>
                                 </ul>
                             </div>
@@ -80,7 +80,7 @@
             </div>
         </div>
     </main>
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-white">
         <div class="container">
             &copy; 2021 - kaninos - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

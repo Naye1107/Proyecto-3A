@@ -76,3 +76,13 @@ body {
   height: 3.5rem;
   width: 3.5rem;
 }
+.img-admin{
+  width: 15em;
+  height: 10em;
+}
+.img-arbol{
+  height: 6em;
+  width: 6em;
+  position: static;
+  display: flex;
+}

@@ -1,0 +1,86 @@
+@{
+    ViewBag.Title = "Criadores";
+    Layout ="~/Views/Template/_adminLayout.cshtml";
+}
+                <div class="col mx-3">
+                    <div class="row">
+                        <div class="col-7 mx-3 bg-dark text-white-50">
+                            <h3 class="text-center fw-bold py-5 text-white">@ViewData["Title"]</h3>
+                            <form action="#">
+                                <div class="mb-4">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="email" class="form-label">Email de Contacto</label>
+                                    <input type="email" class="form-control" name="email" id="email" maxlength="100">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="direccion" class="form-label">Direccion</label>
+                                    <input type="text" class="form-control" name="direccion" id="direccion" maxlength="100">
+                                </div>
+                            </form>
+                            <h3 class="text-center fw-bold py-5 text-white">informacion Adicional</h3>
+                            <form action="#">
+                                <div class="mb-4">
+                                    <label for="facebook" class="form-label">Facebook</label>
+                                    <input type="url" class="form-control" name="facebook" id="facebook">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="twitter" class="form-label">Twitter</label>
+                                    <input type="url" class="form-control" name="twitter" id="twitter">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="youtube" class="form-label">Youtube</label>
+                                    <input type="url" class="form-control" name="youtube" id="youtube">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col mx-3 bg-dark text-white-50">
+                            <form action="#">
+                                <h3 class="text-center fw-bold py-5 text-white">Imagenes</h3>
+                                <div class="pb-5">
+                                    <label for="logotipo" class="form-label">Logotipo</label>
+                                    <input class="form-control-file" type="file" name="logotipo" id="logotipo" value="image/png, image/jpeg">
+                                </div>
+                                <div class="py-5">
+                                    <label for="fotografia" class="form-label">Fotografia</label>
+                                    <input class="form-control-file" type="file" name="fotografia" id="fotografia" value="image/png, image/jpeg">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="container-fluid align-content-end mt-4">
+                            <div class="text-end">
+                                <form action="#">
+                                    <input class="btn btn-secondary m-2" type="button" value="Buscar Criador">
+                                    <input class="btn btn-success m-2" type="button" value="Agergar Criador">
+                                    <input class="btn btn-primary m-2" type="button" value="Modificar Criador">
+                                    <input class="btn btn-danger ms-2 me-0" type="button" value="Borrar Criador">
+                                </form>
+                            </div>
+                            <table class="table table-dark table-striped text-center mt-4">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Criador</th>
+                                    <th>Foto</th>
+                                    <th>Logo</th>
+                                    <th>Datos del Criador</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
