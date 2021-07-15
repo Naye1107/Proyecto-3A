@@ -86,3 +86,41 @@ body {
   position: static;
   display: flex;
 }
+
+.img-not{
+
+  height: 14em;
+  width: 14em;
+  position: static;
+  display: flex;
+  
+}
+
+/* Carruseeeeel, SIIIIIIIIIIIIIIIIII */
+
+.img-1 {
+  background-image: url('../image/perroN.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.img-2 {
+  background-image: url('../image/perroN2.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Fin del carrusel (login) */
+
+
+/* Registro */
+
+.register-bg {
+  background-image: url('../image/hero.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+/* Registro (cierre) */
+
+

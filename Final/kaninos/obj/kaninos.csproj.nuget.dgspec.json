@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\proyectos\\HTML\\Html Proyecto Integrador\\Final\\kaninos\\kaninos.csproj": {}
+    "C:\\Users\\live\\Downloads\\Test\\Proyecto\\Final\\kaninos\\kaninos.csproj": {}
   },
   "projects": {
-    "D:\\proyectos\\HTML\\Html Proyecto Integrador\\Final\\kaninos\\kaninos.csproj": {
+    "C:\\Users\\live\\Downloads\\Test\\Proyecto\\Final\\kaninos\\kaninos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\proyectos\\HTML\\Html Proyecto Integrador\\Final\\kaninos\\kaninos.csproj",
+        "projectUniqueName": "C:\\Users\\live\\Downloads\\Test\\Proyecto\\Final\\kaninos\\kaninos.csproj",
         "projectName": "kaninos",
-        "projectPath": "D:\\proyectos\\HTML\\Html Proyecto Integrador\\Final\\kaninos\\kaninos.csproj",
-        "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-        "outputPath": "D:\\proyectos\\HTML\\Html Proyecto Integrador\\Final\\kaninos\\obj\\",
+        "projectPath": "C:\\Users\\live\\Downloads\\Test\\Proyecto\\Final\\kaninos\\kaninos.csproj",
+        "packagesPath": "C:\\Users\\live\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\live\\Downloads\\Test\\Proyecto\\Final\\kaninos\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\live\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://www.nuget.org/api/v2/": {}
         },
         "frameworks": {
           "net5.0": {
@@ -67,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.205\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
