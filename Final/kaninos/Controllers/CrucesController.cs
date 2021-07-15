@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace kaninos.Controllers
+namespace Kaninos.Controllers
 {
-    public class AdministradorController : Controller
+    public class CrucesController : Controller
     {
-        public AdministradorController()
+        public CrucesController()
         {
         }
 
@@ -16,19 +16,23 @@ namespace kaninos.Controllers
         {
             return View();
         }
-        public IActionResult Criadores()
+
+        public IActionResult Details()
         {
             return View();
         }
-        public IActionResult Cruces()
+
+        public IActionResult Edit()
         {
             return View();
         }
-        public IActionResult Ejemplares()
+
+        public IActionResult Delete()
         {
             return View();
         }
-        public IActionResult ArbolGen()
+
+        public IActionResult New()
         {
             return View();
         }

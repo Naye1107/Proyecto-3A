@@ -1,0 +1,38 @@
+@{
+    ViewBag.Title = "Cruces";
+    Layout ="~/Views/Template/_adminLayout.cshtml";
+}
+                <div class="col mx-3">
+                    <div class="row">
+                        <div class="col mx-3 bg-dark">
+                            <h3 class="text-center fw-bold pt-5 bg-dark text-white">@ViewData["Title"]</h3>
+                            <div class="container-fluid align-content-end">
+                                <form action="#">
+                                    <div class="text-left">
+                                        <a class="btn btn-success my-3" asp-controller="Cruces" asp-action="New">Nuevo</a>
+                                    </div>
+                                    <table class="table table-light table-striped text-center">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nombre</th>
+                                            <th>Datos del Cruce</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <div class="text-center">
+                                                    <a class="btn btn-secondary my-2" asp-controller="Cruces" asp-action="Details">Detalles</a>
+                                                    <a class="btn btn-primary my-2" asp-controller="Cruces" asp-action="Edit">Modificar</a>
+                                                    <a class="btn btn-danger my-2" asp-controller="Cruces" asp-action="Delete">Eliminar</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>

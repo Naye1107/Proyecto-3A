@@ -1,11 +1,11 @@
 @{
-    ViewBag.Title = "Criadores";
-    Layout ="~/Views/Template/_adminLayout.cshtml";
+    ViewBag.Title = "Editar";
+    Layout ="~/Views/Template/_CriadoresLayout.cshtml";
 }
                 <div class="col mx-3">
                     <div class="row">
                         <div class="col-7 mx-3 bg-dark text-white-50">
-                            <h3 class="text-center fw-bold py-5 text-white">@ViewData["Title"]</h3>
+                            <h3 class="text-center fw-bold py-5 text-white">Criadores</h3>
                             <form action="#">
                                 <div class="mb-4">
                                     <label for="nombre" class="form-label">Nombre</label>
@@ -48,39 +48,6 @@
                                     <input class="form-control-file" type="file" name="fotografia" id="fotografia" value="image/png, image/jpeg">
                                 </div>
                             </form>
-                        </div>
-                        <div class="container-fluid align-content-end mt-4">
-                            <div class="text-end">
-                                <form action="#">
-                                    <input class="btn btn-secondary m-2" type="button" value="Buscar Criador">
-                                    <input class="btn btn-success m-2" type="button" value="Agergar Criador">
-                                    <input class="btn btn-primary m-2" type="button" value="Modificar Criador">
-                                    <input class="btn btn-danger ms-2 me-0" type="button" value="Borrar Criador">
-                                </form>
-                            </div>
-                            <table class="table table-dark table-striped text-center mt-4">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Criador</th>
-                                    <th>Foto</th>
-                                    <th>Logo</th>
-                                    <th>Datos del Criador</th>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
                         </div>
                     </div>
                 </div>

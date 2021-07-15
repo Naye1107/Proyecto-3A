@@ -28,6 +28,26 @@ namespace kaninos.Controllers
             return View();
         }
 
+        public IActionResult Administrador()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+        
+        public IActionResult Registro()
+        {
+            return View();
+        }
+        
+        public IActionResult Noticias()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
