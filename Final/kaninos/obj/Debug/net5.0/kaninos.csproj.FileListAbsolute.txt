@@ -287,3 +287,4 @@ C:\Users\live\Downloads\Test\Proyecto\Final\kaninos\obj\Debug\net5.0\ref\kaninos
 C:\Users\live\Downloads\Test\Proyecto\Final\kaninos\obj\Debug\net5.0\kaninos.pdb
 C:\Users\live\Downloads\Test\Proyecto\Final\kaninos\obj\Debug\net5.0\kaninos.genruntimeconfig.cache
 C:\Users\live\Downloads\Test\Proyecto\Final\kaninos\obj\Debug\net5.0\Razor\Views\Home\acercade.cshtml.g.cs
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Home\acercade.cshtml.g.cs

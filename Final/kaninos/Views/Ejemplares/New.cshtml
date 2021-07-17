@@ -1,6 +1,7 @@
 @{
     ViewBag.Title = "Nuevo";
     Layout ="~/Views/Template/_EjemplaresLayout.cshtml";
+    var ejemplar = $"~/image/not-found.png";
 }
                 <div class="col mx-3">
                     <div class="row">
@@ -11,40 +12,49 @@
                                     <label for="nombre" class="form-label">Nombre</label>
                                     <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50">
                                 </div>
-                                <div class="mb-4">
-                                    <label for="pedigree" class="form-label">Pedigree</label>
-                                    <input type="text" class="form-control" name="pedigree" id="pedigree" maxlength="100">
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <input class="form-control me-2" type="search" placeholder="Padre" aria-label="Search">
+                                    </div>
+                                    <div class="col-6">
+                                        <input class="form-control me-2" type="search" placeholder="Madre" aria-label="Search">
+                                    </div>
                                 </div>
-                                <div class="mb-4">
-                                    <label for="edad" class="form-label">Edad</label>
-                                    <input type="number" class="form-control" name="edad" id="edad" min="0" max="20" value="0">
-                                </div>
-                                <div class="mb-4">
-                                    <select class="form-control form-control-sm" aria-label="raza">
-                                        <option selected>Raza</option>
-                                        <option value="1">Husky</option>
-                                        <option value="2">Golden Retriever</option>
-                                        <option value="3">Collie</option>
-                                    </select>
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <label for="edad" class="form-label">Edad</label>
+                                        <input type="number" class="form-control" name="edad" id="edad" min="0" max="20" value="0">
+                                    </div>
+                                    <div class="col-6">
+                                        <br>
+                                        <select class="form-control mt-2" aria-label="raza">
+                                            <option selected>Raza</option>
+                                            <option value="1">Husky</option>
+                                            <option value="2">Golden Retriever</option>
+                                            <option value="3">Collie</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="mb-4">
                                     <input class="form-control me-2" type="search" placeholder="Criador" aria-label="Search">
                                 </div>
-                                <div class="mb-4">
-                                    <select class="form-control form-control-sm" aria-label="raza">
-                                        <option selected>Variedad</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
-                                </div>
-                                <div class="mb-4">
-                                    <select class="form-control form-control-sm" aria-label="raza">
-                                        <option selected>Color</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
+                                <div class="row mb-4">
+                                    <div class="col-6">
+                                        <select class="form-control" aria-label="variedad">
+                                            <option selected>Variedad</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
+                                        <select class="form-control" aria-label="color">
+                                            <option selected>Color</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="mb-4">
                                     <label for="descripcion" class="form-label">Descripcion</label>
@@ -55,9 +65,11 @@
                         <div class="col mx-3 bg-dark text-white-50">
                             <form action="#">
                                 <h3 class="text-center fw-bold py-5 text-white">Imagenes</h3>
-                                <div class="py-5">
+                                <div class="form-group">
                                     <label for="ejemplar" class="form-label">Foto Ejemplar</label>
-                                    <input class="form-control-file" type="file" name="ejemplar" id="ejemplar" value="image/png, image/jpeg">
+                                    <img class="img-fluid rounded mx-auto d-block" src="~/image/not-found.png" alt="Foto Ejemplar" for="ejemplar">
+                                    <input class="form-control-file" type="file" id="ejemplar" name="ejemplar" value="image/png,image/jpeg">
+                                    <span class="text-danger" for="ejemplar"></span>
                                 </div>
                             </form>
                         </div>
