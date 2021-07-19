@@ -116,9 +116,7 @@ D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\zh-Han
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Home\Administrador.cshtml.g.cs
-D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\ArbolGen\Delete.cshtml.g.cs
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\ArbolGen\Details.cshtml.g.cs
-D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\ArbolGen\Edit.cshtml.g.cs
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\ArbolGen\Index.cshtml.g.cs
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Criadores\Delete.cshtml.g.cs
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Criadores\Details.cshtml.g.cs
@@ -130,7 +128,6 @@ D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Ejemplares\Delete.cshtml.g.cs
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Ejemplares\Details.cshtml.g.cs
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Ejemplares\Index.cshtml.g.cs
-D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\ArbolGen\New.cshtml.g.cs
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Criadores\New.cshtml.g.cs
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Cruces\Edit.cshtml.g.cs
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Cruces\New.cshtml.g.cs
@@ -288,3 +285,32 @@ C:\Users\live\Downloads\Test\Proyecto\Final\kaninos\obj\Debug\net5.0\kaninos.pdb
 C:\Users\live\Downloads\Test\Proyecto\Final\kaninos\obj\Debug\net5.0\kaninos.genruntimeconfig.cache
 C:\Users\live\Downloads\Test\Proyecto\Final\kaninos\obj\Debug\net5.0\Razor\Views\Home\acercade.cshtml.g.cs
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\Razor\Views\Home\acercade.cshtml.g.cs
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\System.Runtime.Caching.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
