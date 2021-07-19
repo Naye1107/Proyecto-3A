@@ -11,5 +11,6 @@ namespace kaninos.Data
         }
 
         public virtual DbSet<Criador> Criadores { get; set; }
+        public virtual DbSet<Cruce> Cruces { get; set; }
     }
 }

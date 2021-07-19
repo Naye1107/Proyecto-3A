@@ -1,54 +1,67 @@
+@model kaninos.Models.CruceDTO
 @{
     ViewBag.Title = "Nuevo";
     Layout ="~/Views/Template/_CrucesLayout.cshtml";
+    ViewBag.Message = "";
 }
                 <div class="col mx-3">
-                    <div class="row">
-                        <div class="col mx-3 bg-dark text-white-50">
-                            <h3 class="text-center fw-bold py-5 bg-dark text-white">Cruces</h3>
-                            <form action="#">
+                    <form action="" method="post">
+                        <div class="container">
+                            <b class="text-info">@ViewBag.Message</b>
+                        </div>
+                        <div class="row">
+                            <div class="col mx-3 bg-dark text-white-50">
+                                <h3 class="text-center fw-bold py-5 bg-dark text-white">Cruces</h3>
                                 <div class="mb-4">
                                     <label for="nombre" class="form-label">Nombre Del Cruce</label>
-                                    <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50">
+                                    <input type="text" class="form-control" asp-for="nombre" maxlength="50">
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-6">
-                                        <input class="form-control me-2" type="search" placeholder="Macho" aria-label="Search">
+                                        <label for="macho" class="form-label">Macho</label>
+                                        <input type="text" class="form-control" asp-for="macho" maxlength="50">
                                     </div>
                                     <div class="col-6">
-                                        <input class="form-control me-2" type="search" placeholder="Hembra" aria-label="Search">
+                                        <label for="hembra" class="form-label">Hembra</label>
+                                        <input type="text" class="form-control" asp-for="hembra" maxlength="50">
                                     </div>
                                 </div>
                                 <div class="mb-4">
                                     <label for="fecha_emp" class="form-label">Fecha de Emparejamiento</label>
-                                    <input type="date" class="form-control" name="fecha_emp" id="fecha_emp">
+                                    <input type="date" class="form-control" asp-for="fecha_emp">
                                 </div>
                                 <div class="mb-4">
                                     <label for="fecha_nac" class="form-label">Fecha Nacimiento</label>
-                                    <input type="date" class="form-control" name="fecha_nac" id="fecha_nac">
+                                    <input type="date" class="form-control" asp-for="fecha_nac">
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-3">
                                         <label for="ejemplares_nac" class="form-label">Ejemplares Nacidos</label>
-                                        <input type="number" class="form-control" name="ejemplares_nac" id="ejemplares_nac" min="1" max="20" value="1">
+                                        <input type="number" class="form-control" asp-for="ejemplares_nac" min="1" max="20" value="1">
                                     </div>
                                     <div class="col-3">
                                         <label for="cantidad_machos" class="form-label">Cantidad de Machos</label>
-                                        <input type="number" class="form-control" name="cantidad_machos" id="cantidad_machos" min="0" max="20" value="0">
+                                        <input type="number" class="form-control" asp-for="cantidad_machos" min="0" max="20" value="0">
                                     </div>
                                     <div class="col-3">
                                         <label for="cantidad_hembras" class="form-label">Cantidad de Hembras</label>
-                                        <input type="number" class="form-control" name="cantidad_hembras" id="cantidad_hembras" min="0" max="20" value="0">
+                                        <input type="number" class="form-control" asp-for="cantidad_hembras" min="0" max="20" value="0">
                                     </div>
                                     <div class="col-3">
                                         <label for="num_bajas" class="form-label">Numero de Bajas</label>
-                                        <input type="number" class="form-control" name="num_bajas" id="num_bajas" min="0" max="20" value="0">
+                                        <input type="number" class="form-control" asp-for="num_bajas" min="0" max="20" value="0">
                                     </div>
                                 </div>
                                 <div class="mb-4">
-                                    <input class="form-control me-2" type="search" placeholder="Criador" aria-label="Search">
+                                    <label for="criador" class="form-label">Criador</label>
+                                    <input type="text" class="form-control me-2" asp-for="criador" maxlength="50">
                                 </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
+                        <div class="my-4 text-right">
+                            <input class="btn btn-light ml-2 mr-2" type="reset" value="Restablecer">
+                            <input class="btn btn-success ml-2 mr-2" type="submit" value="Registar">
+                            <a class="btn btn-danger ml-2" asp-controller="Cruces" asp-action="Index">Cancelar</a>
+                        </div>
+                    </form>
                 </div>
