@@ -1,3 +1,4 @@
+@model IEnumerable<CriadorDTO>
 @{
     ViewBag.Title = "Criadores";
     Layout ="~/Views/Template/_adminLayout.cshtml";
@@ -20,12 +21,17 @@
                                             <th>Datos del Criador</th>
                                             <th></th>
                                         </tr>
+                                    @foreach (var item in Model)
+                                    {
                                         <tr>
-                                            <td>1</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>@item.id_criador</td>
+                                            <td>@item.nombre</td>
+                                            <td>@item.fotografia</td>
+                                            <td>@item.logotipo</td>
+                                            <td class="text-left">
+                                                <p>Email: @item.email</p>
+                                                <p>Direccion: @item.direccion</p>
+                                            </td>
                                             <td>
                                                 <div class="text-center">
                                                     <a class="btn btn-secondary my-2" asp-controller="Criadores" asp-action="Details">Detalles</a>
@@ -34,6 +40,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                    }
                                     </table>
                                 </form>
                             </div>

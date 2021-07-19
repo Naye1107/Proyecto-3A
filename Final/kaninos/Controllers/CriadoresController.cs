@@ -19,7 +19,19 @@ namespace Kaninos.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var criador =_dbContext.Criadores.Select(c => new CriadorDTO
+                {
+                    id_criador = c.id_criador,
+                    nombre = c.nombre,
+                    email = c.email,
+                    direccion = c.direccion,
+                    facebook = c.facebook == null ? "N/A" : c.facebook,
+                    twitter = c.twitter == null ? "N/A" : c.twitter,
+                    youtube = c.youtube == null ? "N/A" : c.youtube,
+                    logotipo = c.logotipo == null ? "N/A" : c.logotipo,
+                    fotografia = c.fotografia == null ? "N/A" : c.fotografia,
+                }).ToList();
+            return View(criador);
         }
 
         public IActionResult Details()
@@ -62,7 +74,8 @@ namespace Kaninos.Controllers
             };
             _dbContext.Criadores.Add(criador);
             _dbContext.SaveChanges();
-            return View();
+
+            return RedirectToAction("Index");
         }
     }
 }

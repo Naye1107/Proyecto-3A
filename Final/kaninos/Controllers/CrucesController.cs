@@ -19,7 +19,21 @@ namespace Kaninos.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var cruce =_dbContext.Cruces.Select(c => new CruceDTO
+                {
+                    id = c.id,
+                    nombre = c.nombre,
+                    id_macho = c.id_macho,
+                    id_hembra = c.id_hembra,
+                    fecha_emp = c.fecha_emp,
+                    fecha_nac = c.fecha_nac,
+                    ejemplares_nac = c.ejemplares_nac,
+                    cantidad_machos = c.cantidad_machos,
+                    cantidad_hembras = c.cantidad_hembras,
+                    num_bajas = c.num_bajas,
+                    id_criador = c.id_criador,
+                }).ToList();
+            return View(cruce);
         }
 
         public IActionResult Details()
@@ -49,22 +63,23 @@ namespace Kaninos.Controllers
             var cruce = new Cruce
             {
                 nombre = dto.nombre,
-                id_macho = dto.macho,
-                id_hembra = dto.hembra,
+                id_macho = dto.id_macho,
+                id_hembra = dto.id_hembra,
                 fecha_emp = dto.fecha_emp,
                 fecha_nac = dto.fecha_nac,
                 ejemplares_nac = dto.ejemplares_nac,
                 cantidad_machos = dto.cantidad_machos,
                 cantidad_hembras = dto.cantidad_hembras,
                 num_bajas = dto.num_bajas,
-                id_criador = dto.criador,
+                id_criador = dto.id_criador,
                 is_deleted = false,
                 created_date = DateTime.Now,
                 modified_date = null
             };
             _dbContext.Cruces.Add(cruce);
             _dbContext.SaveChanges();
-            return View();
+            
+            return RedirectToAction("Index");
         }
     }
 }
