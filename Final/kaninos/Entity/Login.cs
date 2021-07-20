@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace kaninos.Entities
 {
+    [Table("log_reg")]
     public class Login
     {
         [Key]
