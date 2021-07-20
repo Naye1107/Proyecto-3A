@@ -6,17 +6,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using kaninos.Models;
+using kaninos.Data;
+using kaninos.Entities;
+
+
 
 namespace kaninos.Controllers
 {
+
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ApplicationDbContext _dbContext;
+        public HomeController(ILogger<HomeController> logger,ApplicationDbContext dbContext)
         {
             _logger = logger;
+            _dbContext = dbContext;
         }
+   
 
         public IActionResult Index()
         {
@@ -41,6 +49,26 @@ namespace kaninos.Controllers
         public IActionResult Registro()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Registro(LoginDTO dto)
+        {
+            var login = new Login
+            {
+                nombre = dto.nombre,
+                apellido = dto.apellido,
+                email = dto.email,
+                pass = dto.pass,
+                is_deleted = false,
+                created_date = DateTime.Now,
+                modified_date = null
+            };
+            _dbContext.Logins.Add(login);
+            _dbContext.SaveChanges();
+
+            return RedirectToAction("Login");
         }
         
         public IActionResult Noticias()

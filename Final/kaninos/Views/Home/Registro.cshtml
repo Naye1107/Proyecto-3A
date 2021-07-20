@@ -1,5 +1,6 @@
+@model kaninos.Models.LoginDTO
 @{
-    ViewData["Title"] = "Regsitrate";
+    ViewData["Title"] = "Registrate";
 }
     <section class="contact-box">
        <div class="row no-gutters bg-dark">
@@ -15,32 +16,32 @@
 
                     <p class="text-muted mb-5">Ingresa la siguiente información para registrarte.</p>
 
-                    <form>
+                    <form  action="" method="post">
                         <div class="form-row mb-2">
                             <div class="form-group col-md-6">
-                                <label class="font-weight-bold">Nombre <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="Tu nombre">
+                                <label for="nombre" class="font-weight-bold">Nombre <span class="text-danger">*</span></label>
+                                <input asp-for="nombre" type="text" class="form-control" placeholder="Tu nombre">
                             </div>
                             <div class="form-group col-md-6">
-                                <label class="font-weight-bold">Apellido <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" placeholder="Tu apellido">
+                                <label for="apellido" class="font-weight-bold">Apellido <span class="text-danger">*</span></label>
+                                <input asp-for="apellido" type="text" class="form-control" placeholder="Tu apellido">
                             </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label class="font-weight-bold">Correo electrónico <span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" placeholder="Ingresa tu correo electrónico">
+                            <label for="email" class="font-weight-bold">Correo electrónico <span class="text-danger">*</span></label>
+                            <input asp-for="email" type="email" class="form-control" placeholder="Ingresa tu correo electrónico">
                         </div>
                         <div class="form-group mb-3">
-                            <label class="font-weight-bold">Contraseña <span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" placeholder="Ingresa una contraseña">
+                            <label for="pass" class="font-weight-bold">Contraseña <span class="text-danger">*</span></label>
+                            <input asp-for="pass" type="password" class="form-control" placeholder="Ingresa una contraseña">
                         </div>
-                        <div class="form-group mb-5">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox">
-                                <label class="form-check-label text-muted">Al seleccionar esta casilla aceptas nuestro aviso de privacidad y los términos y condiciones</label>
-                            </div>
+
+                        <div class="my-4 text-right">
+                            <input class="btn btn-light ml-2 mr-2" type="reset" value="Restablecer">
+                            <input class="btn btn-success ml-2 mr-2" type="submit" value="Registrate">
+                            <a class="btn btn-danger ml-2" asp-controller="Home" asp-action="Login">Cancelar</a>
                         </div>
-                        <a class="btn btn-primary width-100" asp-controller="Home" asp-action="Login">Regístrate</a>
+
                     </form>
                 </div>
            </div>
