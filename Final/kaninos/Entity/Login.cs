@@ -14,7 +14,7 @@ namespace kaninos.Entities
         public string apellido { get; set; }
         public string email { get; set; }
         public string pass { get; set; }
-        public bool is_deleted { get; set; }
+        public int is_deleted { get; set; }
         public DateTime created_date { get; set; }
         public DateTime? modified_date { get; set; }
     }

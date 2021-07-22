@@ -1,3 +1,4 @@
+@model kaninos.Models.LoginDTO
 @{
     ViewData["Title"] = "Iniciar sesión";
 }
@@ -35,18 +36,19 @@
             <div class="col-lg-5 bg-dark d-flex flex-column align-items-end min-vh-100">
                 <div class="align-self-center w-100 px-lg-5 py-lg-4 p-4">
                 <h1 class="font-weight-bold mb-4 text-white">Bienvenido de nuevo</h1>
-                <form class="mb-5">
+                <form class="mb-5" asp-controller="Home" asp-action="Login" method="post">
                     <div class="mb-4">
-                      <label for="exampleInputEmail1" class="form-label font-weight-bold text-white">Correo electronico</label>
-                      <input type="email" class="form-control bg-dark-x border-0" id="exampleInputEmail1" placeholder="Ingresa tu correo electronico" aria-describedby="emailHelp">
+                      <label for="email" class="form-label font-weight-bold text-white">Correo electronico</label>
+                      <input type="email" class="form-control bg-dark-x border-0" asp-for="email" placeholder="Ingresa tu correo electronico" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-4">
-                      <label for="exampleInputPassword1" class="form-label font-weight-bold text-white">Contraseña</label>
-                      <input type="password" class="form-control bg-dark-x border-0 mb-2" placeholder="Ingresa tu contraseña" id="exampleInputPassword1">
+                      <label for="pass" class="form-label font-weight-bold text-white">Contraseña</label>
+                      <input type="password" class="form-control bg-dark-x border-0 mb-2" placeholder="Ingresa tu contraseña" asp-for="pass">
                     </div>
-                    <a class="btn btn-primary w-100" asp-controller="Home" asp-action="Index">Iniciar sesión</a>
+                    <div class="my-4 text-right">
+                      <input class="btn btn-success ml-2 mr-2" type="submit" value="Iniciar sesión">
+                    </div>
                   </form>
-
                 <p class="font-weight-bold text-center text-muted">No tienes una cuenta?</p>
                 <div class="d-flex justify-content-around">
                   <a class="btn btn-outline-light flex-grow-1 mr-2" asp-controller="Home" asp-action="Registro">Crea una cuenta</a>

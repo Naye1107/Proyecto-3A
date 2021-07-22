@@ -45,7 +45,15 @@ namespace kaninos.Controllers
         {
             return View();
         }
-        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(LoginDTO dto)
+        {
+            var login =_dbContext.Logins.FirstOrDefault(login => login.email == dto.email && login.pass == dto.pass);
+            return login == null ? RedirectToAction("Login","Home") : RedirectToAction("Index","Home");
+        }
+
         public IActionResult Registro()
         {
             return View();
@@ -61,7 +69,7 @@ namespace kaninos.Controllers
                 apellido = dto.apellido,
                 email = dto.email,
                 pass = dto.pass,
-                is_deleted = false,
+                is_deleted = 0,
                 created_date = DateTime.Now,
                 modified_date = null
             };

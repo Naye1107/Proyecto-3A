@@ -78,7 +78,7 @@ namespace Kaninos.Controllers
             };
             _dbContext.Cruces.Add(cruce);
             _dbContext.SaveChanges();
-            
+
             return RedirectToAction("Index");
         }
     }
