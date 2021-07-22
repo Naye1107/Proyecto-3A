@@ -54,7 +54,7 @@ namespace kaninos.Controllers
             
             ViewBag.Message="Email y Contraseña No Coinciden";
             
-            return login == null ? View() : RedirectToAction("Index","Home");
+            return login == null ? View() : RedirectToAction("Administrador","Home");
         }
 
         public IActionResult Registro()
