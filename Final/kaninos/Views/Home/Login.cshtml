@@ -36,6 +36,9 @@
             <div class="col-lg-5 bg-dark d-flex flex-column align-items-end min-vh-100">
                 <div class="align-self-center w-100 px-lg-5 py-lg-4 p-4">
                 <h1 class="font-weight-bold mb-4 text-white">Bienvenido de nuevo</h1>
+                <div class="my-4">
+                  <b class="text-info">@ViewBag.Message</b>
+                </div>
                 <form class="mb-5" asp-controller="Home" asp-action="Login" method="post">
                     <div class="mb-4">
                       <label for="email" class="form-label font-weight-bold text-white">Correo electronico</label>

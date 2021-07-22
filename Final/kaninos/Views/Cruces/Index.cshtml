@@ -35,9 +35,9 @@
                                             </td>
                                             <td>
                                                 <div class="text-center">
-                                                    <a class="btn btn-secondary my-2" asp-controller="Cruces" asp-action="Details">Detalles</a>
-                                                    <a class="btn btn-primary my-2" asp-controller="Cruces" asp-action="Edit">Modificar</a>
-                                                    <a class="btn btn-danger my-2" asp-controller="Cruces" asp-action="Delete">Eliminar</a>
+                                                    <a class="btn btn-secondary my-2" asp-controller="Cruces" asp-action="Details" asp-route-id="@item.id">Detalles</a>
+                                                    <a class="btn btn-primary my-2" asp-controller="Cruces" asp-action="Edit" asp-route-id="@item.id">Modificar</a>
+                                                    <a class="btn btn-danger my-2" asp-controller="Cruces" asp-action="Delete" asp-route-id="@item.id">Eliminar</a>
                                                 </div>
                                             </td>
                                         </tr>

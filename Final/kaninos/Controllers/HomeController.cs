@@ -50,8 +50,11 @@ namespace kaninos.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginDTO dto)
         {
-            var login =_dbContext.Logins.FirstOrDefault(login => login.email == dto.email && login.pass == dto.pass);
-            return login == null ? RedirectToAction("Login","Home") : RedirectToAction("Index","Home");
+            var login =_dbContext.Logins.FirstOrDefault(login => login.email == dto.email && login.pass == dto.pass);            
+            
+            ViewBag.Message="Email y Contraseña No Coinciden";
+            
+            return login == null ? View() : RedirectToAction("Index","Home");
         }
 
         public IActionResult Registro()

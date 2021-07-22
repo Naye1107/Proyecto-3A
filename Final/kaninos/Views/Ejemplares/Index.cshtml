@@ -1,3 +1,4 @@
+@model IEnumerable<EjemplarDTO>
 @{
     ViewBag.Title = "Ejemplares";
     Layout ="~/Views/Template/_adminLayout.cshtml";
@@ -15,21 +16,29 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Nombre</th>
+                                            <th>Foto</th>
                                             <th>Datos del ejemplar</th>
                                             <th></th>
                                         </tr>
+                                    @foreach (var item in Model)
+                                    {
                                         <tr>
-                                            <td>1</td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>@item.id_ejemplar</td>
+                                            <td>@item.nombre</td>
+                                            <td>@item.foto_ejemplar</td>
+                                            <td class="text-left">
+                                                <p>Edad: @item.edad</p>
+                                                <p>Raza: @item.id_raza</p>
+                                            </td>
                                             <td>
                                                 <div class="text-center">
-                                                    <a class="btn btn-secondary my-2" asp-controller="Ejemplares" asp-action="Details">Detalles</a>
-                                                    <a class="btn btn-primary my-2" asp-controller="Ejemplares" asp-action="Edit">Modificar</a>
-                                                    <a class="btn btn-danger my-2" asp-controller="Ejemplares" asp-action="Delete">Eliminar</a>
+                                                    <a class="btn btn-secondary my-2" asp-controller="Ejemplares" asp-action="Details" asp-route-id="@item.id_ejemplar">Detalles</a>
+                                                    <a class="btn btn-primary my-2" asp-controller="Ejemplares" asp-action="Edit" asp-route-id="@item.id_ejemplar">Modificar</a>
+                                                    <a class="btn btn-danger my-2" asp-controller="Ejemplares" asp-action="Delete" asp-route-id="@item.id_ejemplar">Eliminar</a>
                                                 </div>
                                             </td>
                                         </tr>
+                                    }
                                     </table>
                                 </form>
                             </div>

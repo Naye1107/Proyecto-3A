@@ -19,7 +19,19 @@ namespace Kaninos.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var ejemplar =_dbContext.Ejemplares.Select(dto => new EjemplarDTO
+                {
+                    id_ejemplar = dto.id_ejemplar, 
+                    nombre = dto.nombre,
+                    edad = dto.edad,
+                    id_raza = dto.id_raza,
+                    id_criador = dto.id_criador,
+                    id_variedad = dto.id_variedad,
+                    id_color = dto.id_color,
+                    descripcion = dto.descripcion,
+                    foto_ejemplar = dto.foto_ejemplar,
+                }).ToList();
+            return View(ejemplar);
         }
 
         public IActionResult Details()
