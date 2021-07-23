@@ -8654,19 +8654,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\live\\.nuget\\packages\\": {}
+    "C:\\Users\\Alguien\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\live\\Downloads\\Test\\Proyecto\\Final\\kaninos\\kaninos.csproj",
+      "projectUniqueName": "C:\\Users\\Alguien\\Documents\\3er Cuatri\\proy\\Proyecto\\Final\\kaninos\\kaninos.csproj",
       "projectName": "kaninos",
-      "projectPath": "C:\\Users\\live\\Downloads\\Test\\Proyecto\\Final\\kaninos\\kaninos.csproj",
-      "packagesPath": "C:\\Users\\live\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\live\\Downloads\\Test\\Proyecto\\Final\\kaninos\\obj\\",
+      "projectPath": "C:\\Users\\Alguien\\Documents\\3er Cuatri\\proy\\Proyecto\\Final\\kaninos\\kaninos.csproj",
+      "packagesPath": "C:\\Users\\Alguien\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Alguien\\Documents\\3er Cuatri\\proy\\Proyecto\\Final\\kaninos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\live\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Alguien\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8674,7 +8674,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://www.nuget.org/api/v2/": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
@@ -8723,7 +8723,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
