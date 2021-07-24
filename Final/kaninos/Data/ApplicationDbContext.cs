@@ -14,5 +14,8 @@ namespace kaninos.Data
         public virtual DbSet<Cruce> Cruces { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<Ejemplar> Ejemplares { get; set; }
+        public virtual DbSet<Raza> Razas { get; set; }
+        public virtual DbSet<Color> Colores { get; set; }
+        public virtual DbSet<Variedad> Variedades { get; set; }
     }
 }

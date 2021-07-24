@@ -68,7 +68,7 @@ namespace Kaninos.Controllers
                 youtube = dto.youtube,
                 logotipo = dto.logotipo,
                 fotografia = dto.fotografia,
-                is_deleted = false,
+                is_deleted = 0,
                 created_date = DateTime.Now,
                 modified_date = null
             };

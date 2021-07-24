@@ -6,9 +6,6 @@
 }
                 <div class="col mx-3">
                     <form action="" method="post">
-                        <div class="container">
-                            <b class="text-info">@ViewBag.Message</b>
-                        </div>
                         <div class="row">
                             <div class="col-7 mx-3 bg-dark text-white-50">
                                 <h3 class="text-center fw-bold py-5 bg-dark text-white">Ejemplares</h3>
@@ -31,44 +28,54 @@
                                     </div>
                                     <div class="col-6">
                                         <br>
-                                        <select class="form-control mt-2" aria-label="raza" asp-for="id_raza">
+                                        <select class="form-control mt-2" title="Raza" asp-for="id_raza">
                                             <option selected>Raza</option>
-                                            <option value="1">Husky</option>
-                                            <option value="2">Golden Retriever</option>
-                                            <option value="3">Collie</option>
+                                            @foreach (var item in ViewBag.Raza)
+                                            {
+                                                <option value="@item.id_raza">@item.nombre</option>
+                                            }
                                         </select>
                                     </div>
                                 </div>
-                                <div class="mb-4">
-                                    <input class="form-control me-2" type="search" asp-for="id_criador" placeholder="Criador" aria-label="Search">
+                                <div class="mb-2">
+                                    <b class="text-info">@ViewBag.Message</b>
+                                </div>
+                                <div class="input-group mb-4">
+                                    <input class="form-control me-2" type="search" asp-for="criador" placeholder="Criador" aria-label="Search">
+                                    <input type="hidden" asp-for="id_criador" value="">
+                                    <div class="input-group-append">
+                                        <input class="btn btn-success" type="submit" asp-for="btn_bus" value="Buscar">
+                                    </div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-6">
-                                        <select class="form-control" aria-label="variedad" asp-for="id_variedad">
+                                        <select class="form-control" title="Variedad" asp-for="id_variedad">
                                             <option selected>Variedad</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
+                                            @foreach (var item in ViewBag.Variedad)
+                                            {
+                                                <option value="@item.id_variedad">@item.nombre</option>
+                                            }
                                         </select>
                                     </div>
                                     <div class="col-6">
                                         <select class="form-control" aria-label="color" asp-for="id_color">
                                             <option selected>Color</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
+                                            @foreach (var item in ViewBag.Color)
+                                            {
+                                                <option value="@item.id_color">@item.nombre</option>
+                                            }
                                         </select>
                                     </div>
                                 </div>
                                 <div class="mb-4">
                                     <label for="descripcion" class="form-label">Descripción</label>
-                                    <textarea class="form-control" placeholder="Descripcion" asp-for="descripcion" maxlength="500"></textarea>
+                                    <textarea class="form-control" placeholder="Descripción" asp-for="descripcion" maxlength="500"></textarea>
                                 </div>
                             </div>
                             <div class="col mx-3 bg-dark text-white-50">
                                 <h3 class="text-center fw-bold py-5 text-white">Imagenes</h3>
                                 <div class="form-group">
-                                    <label for="foto_ejemplar" class="form-label">Foto ejemplar</label>
+                                    <label for="foto_ejemplar" class="form-label">Foto Ejemplar</label>
                                     <img class="img-fluid rounded mx-auto d-block" src="~/image/not-found.png" alt="Foto Ejemplar" for="foto_ejemplar">
                                     <input class="form-control-file" type="file" asp-for="foto_ejemplar" value="image/png,image/jpeg">
                                     <span class="text-danger" for="foto_ejemplar"></span>
@@ -77,7 +84,7 @@
                         </div>
                         <div class="my-4 text-right">
                             <input class="btn btn-light ml-2 mr-2" type="reset" value="Restablecer">
-                            <input class="btn btn-success ml-2 mr-2" type="submit" value="Registar">
+                            <input class="btn btn-success ml-2 mr-2" type="submit" asp-for="btn_reg" value="Registar">
                             <a class="btn btn-danger ml-2" asp-controller="Cruces" asp-action="Index">Cancelar</a>
                         </div>
                     </form>

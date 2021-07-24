@@ -19,19 +19,21 @@ namespace Kaninos.Controllers
 
         public IActionResult Index()
         {
-            var cruce =_dbContext.Cruces.Select(c => new CruceDTO
+            var cruce =_dbContext.Cruces
+                /*.Include(cruce => cruce.Ejemplar)*/
+                .Select(cruce => new CruceDTO
                 {
-                    id = c.id,
-                    nombre = c.nombre,
-                    id_macho = c.id_macho,
-                    id_hembra = c.id_hembra,
-                    fecha_emp = c.fecha_emp,
-                    fecha_nac = c.fecha_nac,
-                    ejemplares_nac = c.ejemplares_nac,
-                    cantidad_machos = c.cantidad_machos,
-                    cantidad_hembras = c.cantidad_hembras,
-                    num_bajas = c.num_bajas,
-                    id_criador = c.id_criador,
+                    id = cruce.id,
+                    nombre = cruce.nombre,
+                    id_macho = cruce.id_macho,
+                    id_hembra = cruce.id_hembra,
+                    fecha_emp = cruce.fecha_emp,
+                    fecha_nac = cruce.fecha_nac,
+                    ejemplares_nac = cruce.ejemplares_nac,
+                    cantidad_machos = cruce.cantidad_machos,
+                    cantidad_hembras = cruce.cantidad_hembras,
+                    num_bajas = cruce.num_bajas,
+                    id_criador = cruce.id_criador,
                 }).ToList();
             return View(cruce);
         }
