@@ -17,7 +17,7 @@ namespace kaninos.Entities
         public int id_color { get; set; }
         public string descripcion { get; set; }
         public string foto_ejemplar { get; set; }
-        public bool is_deleted { get; set; }
+        public int is_deleted { get; set; }
         public DateTime created_date { get; set; }
         public DateTime? modified_date { get; set; }
     }

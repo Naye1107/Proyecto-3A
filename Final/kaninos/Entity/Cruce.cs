@@ -10,7 +10,6 @@ namespace kaninos.Entities
         [Key]
         public int id { get; set; }
         public string nombre { get; set; }
-        public Ejemplar Ejemplar { get; set; }
         public int id_macho { get; set; }
         public int id_hembra { get; set; }
         public DateTime fecha_emp { get; set; }
@@ -20,7 +19,7 @@ namespace kaninos.Entities
         public int cantidad_hembras { get; set; }
         public int num_bajas { get; set; }
         public int id_criador { get; set; }
-        public bool is_deleted { get; set; }
+        public int is_deleted { get; set; }
         public DateTime created_date { get; set; }
         public DateTime? modified_date { get; set; }
     }

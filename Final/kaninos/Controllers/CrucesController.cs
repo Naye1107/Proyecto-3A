@@ -62,26 +62,74 @@ namespace Kaninos.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult New(CruceDTO dto)
         {
-            var cruce = new Cruce
+            if(dto.btn_padre != null)
             {
-                nombre = dto.nombre,
-                id_macho = dto.id_macho,
-                id_hembra = dto.id_hembra,
-                fecha_emp = dto.fecha_emp,
-                fecha_nac = dto.fecha_nac,
-                ejemplares_nac = dto.ejemplares_nac,
-                cantidad_machos = dto.cantidad_machos,
-                cantidad_hembras = dto.cantidad_hembras,
-                num_bajas = dto.num_bajas,
-                id_criador = dto.id_criador,
-                is_deleted = false,
-                created_date = DateTime.Now,
-                modified_date = null
-            };
-            _dbContext.Cruces.Add(cruce);
-            _dbContext.SaveChanges();
+                var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);            
+            
+                if (ejemplar != null)
+                    {
+                        ViewBag.Padre = ejemplar.id_ejemplar;
 
-            return RedirectToAction("Index");
+                        ViewBag.Message="Busqueda exitosa";
+                    }else
+                    {
+                        ViewBag.Message="No encontramos al Ejemplar solicitado";
+                    }
+            }else if(dto.btn_madre != null)
+            {
+                var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);            
+            
+                if (ejemplar != null)
+                    {
+                        ViewBag.Madre = ejemplar.id_ejemplar;
+
+                        ViewBag.Message="Busqueda exitosa";
+                    }else
+                    {
+                        ViewBag.Message="No encontramos al Criador solicitado";
+                    }
+            }else if (dto.btn_criador != null)
+            {
+                var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);            
+            
+                if (criador != null)
+                    {
+                        ViewBag.Criador = criador.id_criador;
+
+                        ViewBag.Message="Busqueda exitosa";
+                    }else
+                    {
+                        ViewBag.Message="No encontramos al Criador solicitado";
+                    }
+            } else if (dto.btn_reg != null)
+            {
+                var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
+                var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
+                var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);
+
+                var cruce = new Cruce
+                {
+                    nombre = dto.nombre,
+                    id_macho = padre.id_ejemplar,
+                    id_hembra = madre.id_ejemplar,
+                    fecha_emp = dto.fecha_emp,
+                    fecha_nac = dto.fecha_nac,
+                    ejemplares_nac = dto.ejemplares_nac,
+                    cantidad_machos = dto.cantidad_machos,
+                    cantidad_hembras = dto.cantidad_hembras,
+                    num_bajas = dto.num_bajas,
+                    id_criador = criador.id_criador,
+                    is_deleted = 0,
+                    created_date = DateTime.Now,
+                    modified_date = null
+                };
+                _dbContext.Cruces.Add(cruce);
+                _dbContext.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
+            return View();
         }
     }
 }

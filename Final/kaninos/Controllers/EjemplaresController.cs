@@ -80,12 +80,40 @@ namespace Kaninos.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult New(EjemplarDTO dto)
         {
-            if (dto.btn_bus != null)
+            if(dto.btn_padre != null)
+            {
+                var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);            
+            
+                if (ejemplar != null)
+                    {
+                        ViewBag.Padre = ejemplar.id_ejemplar;
+
+                        ViewBag.Message="Busqueda exitosa";
+                    }else
+                    {
+                        ViewBag.Message="No encontramos al Ejemplar solicitado";
+                    }
+            }else if(dto.btn_madre != null)
+            {
+                var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);            
+            
+                if (ejemplar != null)
+                    {
+                        ViewBag.Madre = ejemplar.id_ejemplar;
+
+                        ViewBag.Message="Busqueda exitosa";
+                    }else
+                    {
+                        ViewBag.Message="No encontramos al Criador solicitado";
+                    }
+            }else if (dto.btn_criador != null)
             {
                 var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);            
             
                 if (criador != null)
                     {
+                        ViewBag.Criador = criador.id_criador;
+
                         ViewBag.Message="Busqueda exitosa";
                     }else
                     {
@@ -93,17 +121,21 @@ namespace Kaninos.Controllers
                     }
             } else if (dto.btn_reg != null)
             {
+                var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
+                var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
+                var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);
+
                 var ejemplar = new Ejemplar
                 {
                     nombre = dto.nombre,
                     edad = dto.edad,
                     id_raza = dto.id_raza,
-                    id_criador = dto.id_criador,
+                    id_criador = criador.id_criador,
                     id_variedad = dto.id_variedad,
                     id_color = dto.id_color,
                     descripcion = dto.descripcion,
                     foto_ejemplar = dto.foto_ejemplar,
-                    is_deleted = false,
+                    is_deleted = 0,
                     created_date = DateTime.Now,
                     modified_date = null
                 };
