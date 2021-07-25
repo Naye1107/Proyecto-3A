@@ -50,8 +50,8 @@ namespace Kaninos.Controllers
                     facebook = c.facebook == null ? "N/A" : c.facebook,
                     twitter = c.twitter == null ? "N/A" : c.twitter,
                     youtube = c.youtube == null ? "N/A" : c.youtube,
-                    logotipo = c.logotipo == null ? "N/A" : c.logotipo,
-                    fotografia = c.fotografia == null ? "N/A" : c.fotografia,
+                    logotipo = c.logotipo,
+                    fotografia = c.fotografia,
                 }).ToList();
             return View(criador);
         }

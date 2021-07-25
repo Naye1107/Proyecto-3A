@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Eliminar";
     Layout ="~/Views/Template/_CriadoresLayout.cshtml";
+    var photoPath = $"~/image/{(@Model.fotografia ?? "not-found.png")}";
 }
                 <div class="col mx-3 bg-dark text-white">
                     <h3 class="text-center fw-bold pt-5">@ViewData["Title"]</h3>
@@ -29,7 +30,10 @@
                     </div>
                     <div class="container">
                         <p>Logotipo</p>
-                        <p>Fotografía</p>
+                        <p>Fotografía:</p>
+                        <div class="py-2">
+                            <img src="@photoPath" alt="@Model.nombre" class="img-fluid img-not" asp-append-version="true" id="fotografia" name="fotografia"></img>
+                        </div>
                     </div>
                     <h2 class="text-center fw-bold py-2">¿Estás Seguro?</h2>
                     <form action="" method="post">
