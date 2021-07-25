@@ -100,15 +100,18 @@ namespace Kaninos.Controllers
         {
             var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == id);
             var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == ejemplar.id_criador);
+            var color =_dbContext.Colores.FirstOrDefault(color => color.id_color == ejemplar.id_color);
+            var variedad =_dbContext.Variedades.FirstOrDefault(variedad => variedad.id_variedad == ejemplar.id_variedad);
+            var raza =_dbContext.Razas.FirstOrDefault(raza => raza.id_raza == ejemplar.id_raza);
 
             var dto = new EjemplarDTO
             {
                 nombre = ejemplar.nombre,
                 edad = ejemplar.edad,
-                id_raza = ejemplar.id_raza,
+                raza = raza.nombre,
                 criador = criador.nombre,
-                id_variedad = ejemplar.id_variedad,
-                id_color = ejemplar.id_color,
+                variedad = variedad.nombre,
+                color = color.nombre,
                 descripcion = ejemplar.descripcion,
                 foto_ejemplar = ejemplar.foto_ejemplar,
             };
