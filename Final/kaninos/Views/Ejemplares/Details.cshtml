@@ -1,3 +1,4 @@
+@model kaninos.Models.EjemplarDTO
 @{
     ViewBag.Title = "Detalles";
     Layout ="~/Views/Template/_EjemplaresLayout.cshtml";
@@ -10,35 +11,31 @@
                         <div class="col-4">
                             <div class="container-fluid">
                                 <p>Nombre:</p>
-                                <p>Email:</p>
-                                <p>Direccion:</p>
-                                <p>Facebook:</p>
-                                <p>Twitter:</p>
-                                <p>Youtube:</p>
-                                <p>Fecha de Creacion:</p>
-                                <p>Modificado:</p>                           
+                                <p>Edad:</p>
+                                <p>Raza:</p>
+                                <p>Criador:</p>
+                                <p>Variedad:</p>
+                                <p>Color:</p>
+                                <p>Descripción:</p>                          
                             </div>
                         </div>
                         <div class="col">
                             <div class="container-fluid">
-                                <p>nombre</p>
-                                <p>email</p>
-                                <p>direccion</p>
-                                <p>facebook</p>
-                                <p>twitter</p>
-                                <p>youtube</p>
-                                <p>created_date</p>
-                                <p>modified_date</p>
+                                <p>@Model.nombre</p>
+                                <p>@Model.edad</p>
+                                <p>@Model.id_raza</p>
+                                <p>@Model.criador</p>
+                                <p>@Model.id_variedad</p>
+                                <p>@Model.id_color</p>
+                                <p>@Model.descripcion</p>
+                                 
                             </div>
                         </div>
                     </div>
                     <div class="container">
-                        <p>Logotipo</p>
-                        <p>Fotografia </p>
+                        <p>Foto Del Ejemplar:</p>
                     </div>
                     <div class="text-right">
-                        <a class="btn btn-primary my-2" asp-controller="Criadores" asp-action="Edit" asp-route-id="">Modificar</a>
-                        <a class="btn btn-danger my-2" asp-controller="Criadores" asp-action="Delete" asp-route-id="">Eliminar</a>
-                        <a class="btn btn-danger ml-2" asp-controller="Criadores" asp-action="Index">Cancelar</a>
+                        <a class="btn btn-primary ml-2" asp-controller="Ejemplares" asp-action="Index">Volver</a>
                     </div>
                 </div>

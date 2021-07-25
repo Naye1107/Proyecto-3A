@@ -1,4 +1,38 @@
+@model kaninos.Models.CriadorDTO
 @{
-    ViewBag.Title = "Eliminar";
+    ViewBag.Title = "Detalles";
     Layout ="~/Views/Template/_CriadoresLayout.cshtml";
 }
+                <div class="col mx-3 bg-dark text-white">
+                    <h3 class="text-center fw-bold pt-5">@ViewData["Title"]</h3>
+                    <h2 class="text-center fw-bold py-2"></h2>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="container-fluid">
+                                <p>Nombre:</p>
+                                <p>Email:</p>
+                                <p>Dirección:</p>
+                                <p>Facebook:</p>
+                                <p>Twitter:</p>
+                                <p>Youtube:</p>                          
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="container-fluid">
+                                <p>@Model.nombre</p>
+                                <p>@Model.email</p>
+                                <p>@Model.direccion</p>
+                                <p>@Model.facebook</p>
+                                <p>@Model.twitter</p>
+                                <p>@Model.youtube</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <p>Logotipo</p>
+                        <p>Fotografía</p>
+                    </div>
+                    <div class="text-right">
+                        <a class="btn btn-primary ml-2" asp-controller="Criadores" asp-action="Index">Volver</a>
+                    </div>
+                </div>

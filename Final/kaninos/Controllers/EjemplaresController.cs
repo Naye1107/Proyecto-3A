@@ -34,19 +34,86 @@ namespace Kaninos.Controllers
             return View(ejemplar);
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == id);
+            var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == ejemplar.id_criador);
+
+            var dto = new EjemplarDTO
+            {
+                nombre = ejemplar.nombre,
+                edad = ejemplar.edad,
+                id_raza = ejemplar.id_raza,
+                criador = criador.nombre,
+                id_variedad = ejemplar.id_variedad,
+                id_color = ejemplar.id_color,
+                descripcion = ejemplar.descripcion,
+                foto_ejemplar = ejemplar.foto_ejemplar,
+            };
+
+            return View(dto);
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            return View();
+            var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == id);
+            var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == ejemplar.id_criador);
+
+            var dto = new EjemplarDTO
+            {
+                nombre = ejemplar.nombre,
+                edad = ejemplar.edad,
+                id_raza = ejemplar.id_raza,
+                criador = criador.nombre,
+                id_variedad = ejemplar.id_variedad,
+                id_color = ejemplar.id_color,
+                descripcion = ejemplar.descripcion,
+                foto_ejemplar = ejemplar.foto_ejemplar,
+            };
+
+            var raza = _dbContext.Razas.Select(raza => new RazaDTO
+            {
+                id_raza = raza.id_raza,
+                nombre = raza.nombre
+            });
+
+            var variedad = _dbContext.Variedades.Select(variedad => new VariedadDTO
+            {
+                id_variedad = variedad.id_variedad,
+                nombre = variedad.nombre
+            });
+
+            var color = _dbContext.Colores.Select(color => new ColorDTO
+            {
+                id_color = color.id_color,
+                nombre = color.nombre
+            });
+            
+            ViewBag.Raza = raza;
+            ViewBag.Variedad = variedad;
+            ViewBag.Color = color;
+
+            return View(dto);
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
-            return View();
+            var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == id);
+            var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == ejemplar.id_criador);
+
+            var dto = new EjemplarDTO
+            {
+                nombre = ejemplar.nombre,
+                edad = ejemplar.edad,
+                id_raza = ejemplar.id_raza,
+                criador = criador.nombre,
+                id_variedad = ejemplar.id_variedad,
+                id_color = ejemplar.id_color,
+                descripcion = ejemplar.descripcion,
+                foto_ejemplar = ejemplar.foto_ejemplar,
+            };
+
+            return View(dto);
         }
 
         public IActionResult New()

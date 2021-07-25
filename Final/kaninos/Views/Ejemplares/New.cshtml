@@ -39,7 +39,7 @@
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <label for="edad" class="form-label">Edad</label>
-                                        <input type="number" class="form-control" asp-for="edad" min="0" max="20" value="0">
+                                        <input type="number" class="form-control" asp-for="edad" min="0" max="20">
                                     </div>
                                     <div class="col-6">
                                         <br>
@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="col mx-3 bg-dark text-white-50">
-                                <h3 class="text-center fw-bold py-5 text-white">Imagenes</h3>
+                                <h3 class="text-center fw-bold py-5 text-white">Imágenes</h3>
                                 <div class="form-group">
                                     <label for="foto_ejemplar" class="form-label">Foto Ejemplar</label>
                                     <img class="img-fluid rounded mx-auto d-block" src="~/image/not-found.png" alt="Foto Ejemplar" for="foto_ejemplar">
@@ -97,7 +97,7 @@
                         <div class="my-4 text-right">
                             <input class="btn btn-light ml-2 mr-2" type="reset" value="Restablecer">
                             <input class="btn btn-success ml-2 mr-2" type="submit" asp-for="btn_reg" value="Registar">
-                            <a class="btn btn-danger ml-2" asp-controller="Cruces" asp-action="Index">Cancelar</a>
+                            <a class="btn btn-danger ml-2" asp-controller="Ejemplares" asp-action="Index">Cancelar</a>
                         </div>
                     </form>
                 </div>

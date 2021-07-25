@@ -511,3 +511,4 @@ C:\Users\Alguien\Documents\3er Cuatri\proy\Proyecto\Final\kaninos\obj\Debug\net5
 C:\Users\Alguien\Documents\3er Cuatri\proy\Proyecto\Final\kaninos\obj\Debug\net5.0\ref\kaninos.dll
 C:\Users\Alguien\Documents\3er Cuatri\proy\Proyecto\Final\kaninos\obj\Debug\net5.0\kaninos.pdb
 C:\Users\Alguien\Documents\3er Cuatri\proy\Proyecto\Final\kaninos\obj\Debug\net5.0\kaninos.genruntimeconfig.cache
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll

@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace kaninos.Models
 {
@@ -12,6 +14,8 @@ namespace kaninos.Models
         public string twitter { get; set; }
         public string youtube { get; set; }
         public string logotipo { get; set; }
+        public IFormFile logo { get; set; }
         public string fotografia { get; set; }
+        public IFormFile foto { get; set; }
     }
 }

@@ -38,19 +38,73 @@ namespace Kaninos.Controllers
             return View(cruce);
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var cruce = _dbContext.Cruces.FirstOrDefault(cruce => cruce.id == id);
+            var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == cruce.id_macho);
+            var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == cruce.id_hembra);
+            var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == cruce.id_criador);
+            var dto = new CruceDTO
+            {
+                nombre = cruce.nombre,
+                padre = padre.nombre,
+                madre = madre.nombre,
+                fecha_emp = cruce.fecha_emp,
+                fecha_nac = cruce.fecha_nac,
+                ejemplares_nac = cruce.ejemplares_nac,
+                cantidad_machos = cruce.cantidad_machos,
+                cantidad_hembras = cruce.cantidad_hembras,
+                num_bajas = cruce.num_bajas,
+                criador = criador.nombre,
+            };
+
+            return View(dto);
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int id )
         {
-            return View();
+            var cruce = _dbContext.Cruces.FirstOrDefault(cruce => cruce.id == id);
+            var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == cruce.id_macho);
+            var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == cruce.id_hembra);
+            var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == cruce.id_criador);
+            var dto = new CruceDTO
+            {
+                nombre = cruce.nombre,
+                padre = padre.nombre,
+                madre = madre.nombre,
+                fecha_emp = cruce.fecha_emp,
+                fecha_nac = cruce.fecha_nac,
+                ejemplares_nac = cruce.ejemplares_nac,
+                cantidad_machos = cruce.cantidad_machos,
+                cantidad_hembras = cruce.cantidad_hembras,
+                num_bajas = cruce.num_bajas,
+                criador = criador.nombre,
+            };
+
+            return View(dto);
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
-            return View();
+            var cruce = _dbContext.Cruces.FirstOrDefault(cruce => cruce.id == id);
+            var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == cruce.id_macho);
+            var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == cruce.id_hembra);
+            var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == cruce.id_criador);
+            var dto = new CruceDTO
+            {
+                nombre = cruce.nombre,
+                padre = padre.nombre,
+                madre = madre.nombre,
+                fecha_emp = cruce.fecha_emp,
+                fecha_nac = cruce.fecha_nac,
+                ejemplares_nac = cruce.ejemplares_nac,
+                cantidad_machos = cruce.cantidad_machos,
+                cantidad_hembras = cruce.cantidad_hembras,
+                num_bajas = cruce.num_bajas,
+                criador = criador.nombre,
+            };
+
+            return View(dto);
         }
 
         public IActionResult New()

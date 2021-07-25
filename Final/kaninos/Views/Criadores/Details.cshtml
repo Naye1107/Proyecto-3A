@@ -1,3 +1,4 @@
+@model kaninos.Models.CriadorDTO
 @{
     ViewBag.Title = "Detalles";
     Layout ="~/Views/Template/_CriadoresLayout.cshtml";
@@ -13,21 +14,17 @@
                                 <p>Dirección:</p>
                                 <p>Facebook:</p>
                                 <p>Twitter:</p>
-                                <p>Youtube:</p>
-                                <p>Fecha de creación:</p>
-                                <p>Modificado:</p>                           
+                                <p>Youtube:</p>                          
                             </div>
                         </div>
                         <div class="col">
                             <div class="container-fluid">
-                                <p>Nombre</p>
-                                <p>Email</p>
-                                <p>Dirección</p>
-                                <p>Facebook</p>
-                                <p>Twitter</p>
-                                <p>Youtube</p>
-                                <p>Created_date</p>
-                                <p>Modified_date</p>
+                                <p>@Model.nombre</p>
+                                <p>@Model.email</p>
+                                <p>@Model.direccion</p>
+                                <p>@Model.facebook</p>
+                                <p>@Model.twitter</p>
+                                <p>@Model.youtube</p>
                             </div>
                         </div>
                     </div>
@@ -36,8 +33,6 @@
                         <p>Fotografía</p>
                     </div>
                     <div class="text-right">
-                        <a class="btn btn-primary my-2" asp-controller="Criadores" asp-action="Edit" asp-route-id="">Modificar</a>
-                        <a class="btn btn-danger my-2" asp-controller="Criadores" asp-action="Delete" asp-route-id="">Eliminar</a>
-                        <a class="btn btn-danger ml-2" asp-controller="Criadores" asp-action="Index">Cancelar</a>
+                        <a class="btn btn-primary ml-2" asp-controller="Criadores" asp-action="Index">Volver</a>
                     </div>
                 </div>

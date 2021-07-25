@@ -6,15 +6,37 @@ using Microsoft.AspNetCore.Mvc;
 using kaninos.Data;
 using kaninos.Entities;
 using kaninos.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kaninos.Controllers
 {
     public class CriadoresController : Controller
     {
+        private string UploadPhoto(IFormFile file)
+        {
+            if(file == null)
+            {
+                return "not-found.png";
+            }
+
+            var fileName = string.Empty;
+            string uploadFolder = Path.Combine(_hosting.WebRootPath, "image");
+                fileName = $"{Guid.NewGuid()}_{file.FileName.Trim()}";
+                var filePath = Path.Combine(uploadFolder, fileName);
+
+                file.CopyTo(new FileStream(filePath, FileMode.Create));
+                return fileName;
+        }
+    
         private readonly ApplicationDbContext _dbContext;
-        public CriadoresController(ApplicationDbContext dbContext)
+        private readonly IWebHostEnvironment _hosting;
+        public CriadoresController(ApplicationDbContext dbContext, IWebHostEnvironment hostEnvironment)
         {
             _dbContext = dbContext;
+            _hosting = hostEnvironment;
         }
 
         public IActionResult Index()
@@ -34,19 +56,58 @@ namespace Kaninos.Controllers
             return View(criador);
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var criador = _dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == id);
+            var dto = new CriadorDTO
+            {
+                nombre = criador.nombre,
+                email = criador.email,
+                direccion= criador.direccion,
+                facebook = criador.facebook ?? "N/A",
+                twitter = criador.twitter ?? "N/A",
+                youtube = criador.youtube ?? "N/A",
+                logotipo = criador.logotipo,
+                fotografia = criador.fotografia
+            };
+
+            return View(dto);
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            return View();
+            var criador = _dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == id);
+            var dto = new CriadorDTO
+            {
+                nombre = criador.nombre,
+                email = criador.email,
+                direccion= criador.direccion,
+                facebook = criador.facebook,
+                twitter = criador.twitter,
+                youtube = criador.youtube,
+                logotipo = criador.logotipo,
+                fotografia = criador.fotografia
+            };
+
+            return View(dto);
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
-            return View();
+            var criador = _dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == id);
+            var dto = new CriadorDTO
+            {
+                nombre = criador.nombre,
+                email = criador.email,
+                direccion= criador.direccion,
+                facebook = criador.facebook ?? "N/A",
+                twitter = criador.twitter ?? "N/A",
+                youtube = criador.youtube ?? "N/A",
+                logotipo = criador.logotipo,
+                fotografia = criador.fotografia
+            };
+
+            return View(dto);
         }
 
         public IActionResult New()
@@ -76,6 +137,32 @@ namespace Kaninos.Controllers
             _dbContext.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+        
+        [HttpPost]    
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, CriadorDTO dto )
+        {
+            var fileName = UploadPhoto(dto.foto);
+            var criador = await _dbContext.Criadores.FirstOrDefaultAsync(criador => criador.id_criador == id);
+            if(criador == null)
+            {
+                return NotFound();
+            }
+                criador.nombre = dto.nombre;
+                criador.email = dto.email;
+                criador.direccion = dto.direccion;
+                criador.facebook = dto.facebook;
+                criador.twitter = dto.twitter;
+                criador.youtube = dto.youtube;
+                criador.logotipo = dto.logotipo;
+                criador.fotografia = fileName;
+                criador.modified_date = DateTime.Now;
+                
+                _dbContext.Criadores.Update(criador);
+                await _dbContext.SaveChangesAsync();
+
+                return RedirectToAction("Index");
         }
     }
 }
