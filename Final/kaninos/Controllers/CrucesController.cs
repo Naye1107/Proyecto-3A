@@ -169,6 +169,7 @@ namespace Kaninos.Controllers
             var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == cruce.id_criador);
             var dto = new CruceDTO
             {
+                id = cruce.id,
                 nombre = cruce.nombre,
                 padre = padre.nombre,
                 madre = madre.nombre,
@@ -182,6 +183,22 @@ namespace Kaninos.Controllers
             };
 
             return View(dto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(CruceDTO dto)
+        {
+            var cruce = _dbContext.Cruces.FirstOrDefault(cruce => cruce.id == dto.id);
+            if(cruce == null)
+            {
+                return NotFound();
+            }
+            
+            _dbContext.Cruces.Remove(cruce);
+            _dbContext.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult New()

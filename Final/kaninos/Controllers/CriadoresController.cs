@@ -97,6 +97,7 @@ namespace Kaninos.Controllers
             var criador = _dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == id);
             var dto = new CriadorDTO
             {
+                id_criador = criador.id_criador,
                 nombre = criador.nombre,
                 email = criador.email,
                 direccion= criador.direccion,
@@ -108,6 +109,22 @@ namespace Kaninos.Controllers
             };
 
             return View(dto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(CriadorDTO dto)
+        {
+            var criador = _dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == dto.id_criador);
+            if(criador == null)
+            {
+                return NotFound();
+            }
+            
+            _dbContext.Criadores.Remove(criador);
+            _dbContext.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult New()

@@ -206,6 +206,7 @@ namespace Kaninos.Controllers
 
             var dto = new EjemplarDTO
             {
+                id_ejemplar = ejemplar.id_ejemplar,
                 nombre = ejemplar.nombre,
                 edad = ejemplar.edad,
                 raza = raza.nombre,
@@ -217,6 +218,22 @@ namespace Kaninos.Controllers
             };
 
             return View(dto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(EjemplarDTO dto)
+        {
+            var ejemplar = _dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == dto.id_ejemplar);
+            if(ejemplar == null)
+            {
+                return NotFound();
+            }
+            
+            _dbContext.Ejemplares.Remove(ejemplar);
+            _dbContext.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult New()

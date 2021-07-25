@@ -1,12 +1,11 @@
 @model kaninos.Models.EjemplarDTO
 @{
-    ViewBag.Title = "Detalles";
+    ViewBag.Title = "Eliminar";
     Layout ="~/Views/Template/_EjemplaresLayout.cshtml";
 }
 
                 <div class="col mx-3 bg-dark text-white">
                     <h3 class="text-center fw-bold pt-5">@ViewData["Title"]</h3>
-                    <h2 class="text-center fw-bold py-2"></h2>
                     <div class="row">
                         <div class="col-4">
                             <div class="container-fluid">
@@ -35,7 +34,12 @@
                     <div class="container">
                         <p>Foto Del Ejemplar:</p>
                     </div>
-                    <div class="text-right">
-                        <a class="btn btn-primary ml-2" asp-controller="Ejemplares" asp-action="Index">Volver</a>
-                    </div>
+                    <h2 class="text-center fw-bold py-2">¿Estás Seguro?</h2>
+                    <form action="" method="post">
+                        <input type="hidden" asp-for="id_ejemplar">
+                        <div class="text-center">
+                            <input class="btn btn-danger ml-2 mr-2" type="submit" value="Eliminar">
+                            <a class="btn btn-primary ml-2" asp-controller="Ejemplares" asp-action="Index">Cancelar</a>
+                        </div>
+                    </form>
                 </div>
