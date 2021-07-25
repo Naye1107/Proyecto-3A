@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using kaninos.Data;
 using kaninos.Entities;
 using kaninos.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kaninos.Controllers
 {
@@ -69,6 +70,7 @@ namespace Kaninos.Controllers
             var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == cruce.id_criador);
             var dto = new CruceDTO
             {
+                id = cruce.id,
                 nombre = cruce.nombre,
                 padre = padre.nombre,
                 madre = madre.nombre,
@@ -82,6 +84,81 @@ namespace Kaninos.Controllers
             };
 
             return View(dto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(CruceDTO dto)
+        {
+            if(dto.btn_padre != null)
+            {
+                var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);            
+            
+                if (ejemplar != null)
+                    {
+                        ViewBag.Padre = ejemplar.id_ejemplar;
+
+                        ViewBag.Message="Busqueda exitosa";
+                    }else
+                    {
+                        ViewBag.Message="No encontramos al Ejemplar solicitado";
+                    }
+            }else if(dto.btn_madre != null)
+            {
+                var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);            
+            
+                if (ejemplar != null)
+                    {
+                        ViewBag.Madre = ejemplar.id_ejemplar;
+
+                        ViewBag.Message="Busqueda exitosa";
+                    }else
+                    {
+                        ViewBag.Message="No encontramos al Criador solicitado";
+                    }
+            }else if (dto.btn_criador != null)
+            {
+                var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);            
+            
+                if (criador != null)
+                    {
+                        ViewBag.Criador = criador.id_criador;
+
+                        ViewBag.Message="Busqueda exitosa";
+                    }else
+                    {
+                        ViewBag.Message="No encontramos al Criador solicitado";
+                    }
+            } else if (dto.btn_reg != null)
+            {
+                var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
+                var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
+                var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);
+
+                var cruce = await _dbContext.Cruces.FirstOrDefaultAsync(cruce => cruce.id == dto.id);
+                if(cruce == null)
+                {
+                    return NotFound();
+                }
+                    cruce.nombre = dto.nombre;
+                    cruce.id_macho = padre.id_ejemplar;
+                    cruce.id_hembra = madre.id_ejemplar;
+                    cruce.fecha_emp = dto.fecha_emp;
+                    cruce.fecha_nac = dto.fecha_nac;
+                    cruce.ejemplares_nac = dto.ejemplares_nac;
+                    cruce.cantidad_machos = dto.cantidad_machos;
+                    cruce.cantidad_hembras = dto.cantidad_hembras;
+                    cruce.num_bajas = dto.num_bajas;
+                    cruce.id_criador = criador.id_criador;
+                    cruce.modified_date = DateTime.Now;
+
+                _dbContext.Cruces.Update(cruce);
+                await _dbContext.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
+
+            return View();
         }
 
         public IActionResult Delete(int id)

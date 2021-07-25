@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using kaninos.Data;
 using kaninos.Entities;
 using kaninos.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kaninos.Controllers
 {
@@ -64,6 +65,7 @@ namespace Kaninos.Controllers
 
             var dto = new EjemplarDTO
             {
+                id_ejemplar = ejemplar.id_ejemplar,
                 nombre = ejemplar.nombre,
                 edad = ejemplar.edad,
                 id_raza = ejemplar.id_raza,
@@ -74,6 +76,101 @@ namespace Kaninos.Controllers
                 foto_ejemplar = ejemplar.foto_ejemplar,
             };
 
+            var raza = _dbContext.Razas.Select(raza => new RazaDTO
+            {
+                id_raza = raza.id_raza,
+                nombre = raza.nombre
+            });
+
+            var variedad = _dbContext.Variedades.Select(variedad => new VariedadDTO
+            {
+                id_variedad = variedad.id_variedad,
+                nombre = variedad.nombre
+            });
+
+            var color = _dbContext.Colores.Select(color => new ColorDTO
+            {
+                id_color = color.id_color,
+                nombre = color.nombre
+            });
+            
+            ViewBag.Raza = raza;
+            ViewBag.Variedad = variedad;
+            ViewBag.Color = color;
+
+            return View(dto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EjemplarDTO dto)
+        {
+            if(dto.btn_padre != null)
+            {
+                var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);            
+            
+                if (ejemplar != null)
+                    {
+                        ViewBag.Padre = ejemplar.id_ejemplar;
+
+                        ViewBag.Message="Busqueda exitosa";
+                    }else
+                    {
+                        ViewBag.Message="No encontramos al Ejemplar solicitado";
+                    }
+            }else if(dto.btn_madre != null)
+            {
+                var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);            
+            
+                if (ejemplar != null)
+                    {
+                        ViewBag.Madre = ejemplar.id_ejemplar;
+
+                        ViewBag.Message="Busqueda exitosa";
+                    }else
+                    {
+                        ViewBag.Message="No encontramos al Criador solicitado";
+                    }
+            }else if (dto.btn_criador != null)
+            {
+                var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);            
+            
+                if (criador != null)
+                    {
+                        ViewBag.Criador = criador.id_criador;
+
+                        ViewBag.Message="Busqueda exitosa";
+                    }else
+                    {
+                        ViewBag.Message="No encontramos al Criador solicitado";
+                    }
+            } else if (dto.btn_reg != null)
+            {
+                var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
+                var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
+                var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);
+
+                var ejemplar = await _dbContext.Ejemplares.FirstOrDefaultAsync(ejemplar => ejemplar.id_ejemplar == dto.id_ejemplar);
+                if(ejemplar == null)
+                {
+                    return NotFound();
+                }
+
+                ejemplar.nombre = dto.nombre;
+                ejemplar.edad = dto.edad;
+                ejemplar.id_raza = dto.id_raza;
+                ejemplar.id_criador = criador.id_criador;
+                ejemplar.id_variedad = dto.id_variedad;
+                ejemplar.id_color = dto.id_color;
+                ejemplar.descripcion = dto.descripcion;
+                ejemplar.foto_ejemplar = dto.foto_ejemplar;
+                ejemplar.modified_date = DateTime.Now;
+
+                _dbContext.Ejemplares.Update(ejemplar);
+                await _dbContext.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+            }
             var raza = _dbContext.Razas.Select(raza => new RazaDTO
             {
                 id_raza = raza.id_raza,
