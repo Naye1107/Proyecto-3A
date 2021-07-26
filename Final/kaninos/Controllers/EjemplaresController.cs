@@ -83,11 +83,15 @@ namespace Kaninos.Controllers
         {
             var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == id);
             var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.id_criador == ejemplar.id_criador);
+            var padre =_dbContext.Ejemplares.FirstOrDefault(padre => padre.id_ejemplar == ejemplar.id_padre);
+            var madre =_dbContext.Ejemplares.FirstOrDefault(madre => madre.id_ejemplar == ejemplar.id_madre);
 
             var dto = new EjemplarDTO
             {
                 id_ejemplar = ejemplar.id_ejemplar,
                 nombre = ejemplar.nombre,
+                padre = padre.nombre,
+                madre = madre.nombre,
                 edad = ejemplar.edad,
                 id_raza = ejemplar.id_raza,
                 criador = criador.nombre,
@@ -180,6 +184,8 @@ namespace Kaninos.Controllers
                 }
 
                 ejemplar.nombre = dto.nombre;
+                ejemplar.id_padre = padre.id_ejemplar;
+                ejemplar.id_madre = madre.id_ejemplar;
                 ejemplar.edad = dto.edad;
                 ejemplar.id_raza = dto.id_raza;
                 ejemplar.id_criador = criador.id_criador;
@@ -331,23 +337,17 @@ namespace Kaninos.Controllers
                     }
             } else if (dto.btn_reg != null)
             {
-                var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
-                var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
-                
-                var arbol_gen = new ArbolGen
-                {
-                    ejemplar = dto.nombre,
-                    id_padre = padre.id_ejemplar,
-                    id_madre = madre.id_ejemplar
-                };
-
                 var nombre_foto = UploadPhoto(dto.foto);
 
+                var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
+                var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
                 var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);
 
                 var ejemplar = new Ejemplar
                 {
                     nombre = dto.nombre,
+                    id_padre = padre.id_ejemplar,
+                    id_madre = madre.id_ejemplar,
                     edad = dto.edad,
                     id_raza = dto.id_raza,
                     id_criador = criador.id_criador,
@@ -360,7 +360,6 @@ namespace Kaninos.Controllers
                     modified_date = null
                 };
 
-                _dbContext.ArbolGen.Add(arbol_gen);
                 _dbContext.Ejemplares.Add(ejemplar);
                 _dbContext.SaveChanges();
 

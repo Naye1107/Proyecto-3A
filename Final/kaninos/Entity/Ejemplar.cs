@@ -10,6 +10,8 @@ namespace kaninos.Entities
         [Key]
         public int id_ejemplar { get; set;}
         public string nombre { get; set; }
+        public int id_padre { get; set; }
+        public int id_madre { get; set; }
         public int edad { get; set;}
         public int id_raza { get; set;}
         public int id_criador { get; set;}

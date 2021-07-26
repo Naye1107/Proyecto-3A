@@ -19,9 +19,10 @@ namespace Kaninos.Controllers
 
         public IActionResult Index()
         {
-            var arbol_gen =_dbContext.ArbolGen.Select(dto => new EjemplarDTO
+            var arbol_gen =_dbContext.Ejemplares.Select(dto => new EjemplarDTO
                 {
-                    ejemplar = dto.ejemplar,
+                    nombre = dto.nombre,
+                    foto_ejemplar = dto.foto_ejemplar,
                     id_padre = dto.id_padre,
                     id_madre = dto.id_madre
                 }).ToList();
