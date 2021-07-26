@@ -3,7 +3,8 @@
     ViewBag.Title = "Nuevo";
     Layout ="~/Views/Template/_CriadoresLayout.cshtml";
     ViewBag.Message = "";
-    var photoPath = $"~/image/{(@Model.fotografia ?? "not-found.png")}";
+    var fotoPath = $"~/image/usr/{(@Model.fotografia ?? "not-found.png")}";
+    var logoPath = $"~/image/usr/{(@Model.logotipo ?? "not-found.png")}";
 }
                 <div class="col mx-3">
                     <form asp-action="Edit" method="post" enctype="multipart/form-data">
@@ -40,14 +41,17 @@
                                 </div>
                             </div>
                             <div class="col mx-3 bg-dark text-white-50">
-                                <h3 class="text-center fw-bold py-5 text-white">Imagenes</h3>
-                                <div class="form-group pb-5">
+                                <h3 class="text-center fw-bold py-5 text-white">Imágenes</h3>
+                                <div class="form-group py-2">
+                                    <img src="@logoPath" alt="Logotipo" class="img-fluid img-not" asp-append-version="true" id="fotografia" name="fotografia"></img>
+                                </div>
+                                <div class="form-group">
                                     <label asp-for="logo" class="form-label">Logotipo</label>
                                     <input class="form-control-file" type="file" asp-for="logo">
                                     <span asp-validation-for="logo" class="text-danger"></span>
                                 </div>
                                 <div class="form-group py-2">
-                                    <img src="@photoPath" alt="@Model.nombre" class="img-fluid img-not" asp-append-version="true" id="fotografia" name="fotografia"></img>
+                                    <img src="@fotoPath" alt="@Model.nombre" class="img-fluid img-not" asp-append-version="true" id="fotografia" name="fotografia"></img>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="foto" class="form-label">Fotografía</label>

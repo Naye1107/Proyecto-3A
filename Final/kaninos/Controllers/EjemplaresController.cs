@@ -6,16 +6,37 @@ using Microsoft.AspNetCore.Mvc;
 using kaninos.Data;
 using kaninos.Entities;
 using kaninos.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 
 namespace Kaninos.Controllers
 {
     public class EjemplaresController : Controller
     {
+        private string UploadPhoto(IFormFile file)
+        {
+            if(file == null)
+            {
+                return "not-found.png";
+            }
+
+            var fileName = string.Empty;
+            string uploadFolder = Path.Combine(_hosting.WebRootPath, "image/usr");
+                fileName = $"{Guid.NewGuid()}_{file.FileName.Trim()}";
+                var filePath = Path.Combine(uploadFolder, fileName);
+
+                file.CopyTo(new FileStream(filePath, FileMode.Create));
+                return fileName;
+        }
+    
         private readonly ApplicationDbContext _dbContext;
-        public EjemplaresController(ApplicationDbContext dbContext)
+        private readonly IWebHostEnvironment _hosting;
+        public EjemplaresController(ApplicationDbContext dbContext, IWebHostEnvironment hostEnvironment)
         {
             _dbContext = dbContext;
+            _hosting = hostEnvironment;
         }
 
         public IActionResult Index()
@@ -146,6 +167,8 @@ namespace Kaninos.Controllers
                     }
             } else if (dto.btn_reg != null)
             {
+                var nombre_foto = UploadPhoto(dto.foto);
+
                 var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
                 var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
                 var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);
@@ -163,7 +186,7 @@ namespace Kaninos.Controllers
                 ejemplar.id_variedad = dto.id_variedad;
                 ejemplar.id_color = dto.id_color;
                 ejemplar.descripcion = dto.descripcion;
-                ejemplar.foto_ejemplar = dto.foto_ejemplar;
+                ejemplar.foto_ejemplar = nombre_foto;
                 ejemplar.modified_date = DateTime.Now;
 
                 _dbContext.Ejemplares.Update(ejemplar);
@@ -310,6 +333,16 @@ namespace Kaninos.Controllers
             {
                 var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
                 var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
+                
+                var arbol_gen = new ArbolGen
+                {
+                    ejemplar = dto.nombre,
+                    id_padre = padre.id_ejemplar,
+                    id_madre = madre.id_ejemplar
+                };
+
+                var nombre_foto = UploadPhoto(dto.foto);
+
                 var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);
 
                 var ejemplar = new Ejemplar
@@ -321,11 +354,13 @@ namespace Kaninos.Controllers
                     id_variedad = dto.id_variedad,
                     id_color = dto.id_color,
                     descripcion = dto.descripcion,
-                    foto_ejemplar = dto.foto_ejemplar,
+                    foto_ejemplar = nombre_foto,
                     is_deleted = 0,
                     created_date = DateTime.Now,
                     modified_date = null
                 };
+
+                _dbContext.ArbolGen.Add(arbol_gen);
                 _dbContext.Ejemplares.Add(ejemplar);
                 _dbContext.SaveChanges();
 

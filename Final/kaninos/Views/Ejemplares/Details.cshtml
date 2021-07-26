@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Detalles";
     Layout ="~/Views/Template/_EjemplaresLayout.cshtml";
+    var fotoPath = $"~/image/usr/{(@Model.foto_ejemplar ?? "not-found.png")}";
 }
 
                 <div class="col mx-3 bg-dark text-white">
@@ -28,12 +29,14 @@
                                 <p>@Model.variedad</p>
                                 <p>@Model.color</p>
                                 <p>@Model.descripcion</p>
-                                 
                             </div>
                         </div>
                     </div>
                     <div class="container">
                         <p>Foto Del Ejemplar:</p>
+                        <div class="py-2">
+                            <img src="@fotoPath" alt="@Model.nombre" class="img-fluid img-not" asp-append-version="true" id="foto_ejemplar" name="foto_ejemplar"></img>
+                        </div>
                     </div>
                     <div class="text-right">
                         <a class="btn btn-primary ml-2" asp-controller="Ejemplares" asp-action="Index">Volver</a>

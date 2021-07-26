@@ -17,5 +17,6 @@ namespace kaninos.Data
         public virtual DbSet<Raza> Razas { get; set; }
         public virtual DbSet<Color> Colores { get; set; }
         public virtual DbSet<Variedad> Variedades { get; set; }
+        public virtual DbSet<ArbolGen> ArbolGen { get; set; }
     }
 }

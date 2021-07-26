@@ -1,9 +1,12 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace kaninos.Models
 {
     public class EjemplarDTO
     {
+        public string ejemplar { get; set; }
         public int id_ejemplar { get; set; }
         public string nombre { get; set; }
         public int id_padre { get; set; }
@@ -21,6 +24,7 @@ namespace kaninos.Models
         public string color { get; set; }
         public string descripcion { get; set; }
         public string foto_ejemplar { get; set; }
+        public IFormFile foto { get; set; }
         public string btn_reg { get; set; }
         public string btn_criador { get; set; }
         public string btn_padre { get; set; }

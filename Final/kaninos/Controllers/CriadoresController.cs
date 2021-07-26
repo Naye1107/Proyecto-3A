@@ -23,7 +23,7 @@ namespace Kaninos.Controllers
             }
 
             var fileName = string.Empty;
-            string uploadFolder = Path.Combine(_hosting.WebRootPath, "image");
+            string uploadFolder = Path.Combine(_hosting.WebRootPath, "image/usr");
                 fileName = $"{Guid.NewGuid()}_{file.FileName.Trim()}";
                 var filePath = Path.Combine(uploadFolder, fileName);
 
@@ -136,6 +136,9 @@ namespace Kaninos.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult New(CriadorDTO dto)
         {
+            var nombre_foto = UploadPhoto(dto.foto);
+            var nombre_logo = UploadPhoto(dto.logo);
+            
             var criador = new Criador
             {
                 nombre = dto.nombre,
@@ -144,8 +147,8 @@ namespace Kaninos.Controllers
                 facebook = dto.facebook,
                 twitter = dto.twitter,
                 youtube = dto.youtube,
-                logotipo = dto.logotipo,
-                fotografia = dto.fotografia,
+                logotipo = nombre_logo,
+                fotografia = nombre_foto,
                 is_deleted = 0,
                 created_date = DateTime.Now,
                 modified_date = null
@@ -160,7 +163,9 @@ namespace Kaninos.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, CriadorDTO dto )
         {
-            var fileName = UploadPhoto(dto.foto);
+            var nombre_foto = UploadPhoto(dto.foto);
+            var nombre_logo = UploadPhoto(dto.logo);
+
             var criador = await _dbContext.Criadores.FirstOrDefaultAsync(criador => criador.id_criador == id);
             if(criador == null)
             {
@@ -172,8 +177,8 @@ namespace Kaninos.Controllers
                 criador.facebook = dto.facebook;
                 criador.twitter = dto.twitter;
                 criador.youtube = dto.youtube;
-                criador.logotipo = dto.logotipo;
-                criador.fotografia = fileName;
+                criador.logotipo = nombre_logo;
+                criador.fotografia = nombre_foto;
                 criador.modified_date = DateTime.Now;
                 
                 _dbContext.Criadores.Update(criador);

@@ -2,10 +2,10 @@
 @{
     ViewBag.Title = "Nuevo";
     Layout ="~/Views/Template/_EjemplaresLayout.cshtml";
-    var ejemplar = $"~/image/not-found.png";
+    var fotoPath = $"~/image/usr/{(@Model.foto_ejemplar ?? "not-found.png")}";
 }
                 <div class="col mx-3">
-                    <form action="" method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-7 mx-3 bg-dark text-white-50">
                                 <h3 class="text-center fw-bold py-5 bg-dark text-white">Ejemplares</h3>
@@ -87,11 +87,13 @@
                             </div>
                             <div class="col mx-3 bg-dark text-white-50">
                                 <h3 class="text-center fw-bold py-5 text-white">Imágenes</h3>
+                                <div class="form-group py-2">
+                                    <img src="@fotoPath" alt="@Model.nombre" class="img-fluid img-not" asp-append-version="true" id="foto_ejemplar" name="foto_ejemplar"></img>
+                                </div>
                                 <div class="form-group">
-                                    <label for="foto_ejemplar" class="form-label">Foto Ejemplar</label>
-                                    <img class="img-fluid rounded mx-auto d-block" src="~/image/not-found.png" alt="Foto Ejemplar" for="foto_ejemplar">
-                                    <input class="form-control-file" type="file" asp-for="foto_ejemplar" value="image/png,image/jpeg">
-                                    <span class="text-danger" for="foto_ejemplar"></span>
+                                    <label asp-for="foto" class="form-label">Fotografía</label>
+                                    <input class="form-control-file" type="file" asp-for="foto">
+                                    <span asp-validation-for="foto" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>

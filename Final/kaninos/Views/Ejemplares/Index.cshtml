@@ -22,10 +22,15 @@
                                         </tr>
                                     @foreach (var item in Model)
                                     {
+                                        var fotoPath = $"~/image/usr/{(@item.foto_ejemplar ?? "not-found.png")}";
                                         <tr>
                                             <td>@item.id_ejemplar</td>
                                             <td>@item.nombre</td>
-                                            <td>@item.foto_ejemplar</td>
+                                            <td>
+                                                <div class="py-2">
+                                                    <img src="@fotoPath" alt="@item.nombre" class="img-fluid img-arbol" asp-append-version="true" id="foto_ejemplar" name="foto_ejemplar"></img>
+                                                </div>
+                                            </td>
                                             <td class="text-left">
                                                 <p>Edad: @item.edad</p>
                                                 <p>Raza: @item.id_raza</p>

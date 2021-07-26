@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "Eliminar";
     Layout ="~/Views/Template/_CriadoresLayout.cshtml";
-    var photoPath = $"~/image/{(@Model.fotografia ?? "not-found.png")}";
+    var fotoPath = $"~/image/usr/{(@Model.fotografia ?? "not-found.png")}";
+    var logoPath = $"~/image/usr/{(@Model.logotipo ?? "not-found.png")}";
 }
                 <div class="col mx-3 bg-dark text-white">
                     <h3 class="text-center fw-bold pt-5">@ViewData["Title"]</h3>
@@ -29,10 +30,19 @@
                         </div>
                     </div>
                     <div class="container">
-                        <p>Logotipo</p>
-                        <p>Fotografía:</p>
-                        <div class="py-2">
-                            <img src="@photoPath" alt="@Model.nombre" class="img-fluid img-not" asp-append-version="true" id="fotografia" name="fotografia"></img>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>Logotipo:</p>
+                                <div class="py-2">
+                                    <img src="@logoPath" alt="Logotipo" class="img-fluid img-not" asp-append-version="true" id="fotografia" name="fotografia"></img>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <p>Fotografía:</p>
+                                <div class="py-2">
+                                    <img src="@fotoPath" alt="@Model.nombre" class="img-fluid img-not" asp-append-version="true" id="fotografia" name="fotografia"></img>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <h2 class="text-center fw-bold py-2">¿Estás Seguro?</h2>
@@ -40,7 +50,7 @@
                         <input type="hidden" asp-for="id_criador">
                         <div class="text-center">
                             <input class="btn btn-danger ml-2 mr-2" type="submit" value="Eliminar">
-                            <a class="btn btn-primary ml-2" asp-controller="Criadores" asp-action="Index">Volver</a>
+                            <a class="btn btn-primary ml-2" asp-controller="Criadores" asp-action="Index">Cancelar</a>
                         </div>
                     </form>
                 </div>
