@@ -13,14 +13,14 @@
                                     <b class="text-info">@ViewBag.Message</b>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <label for="nombre" class="form-label" required>Nombre</label>
                                     <input type="text" class="form-control" asp-for="nombre" maxlength="50">
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-6">
                                         <input type="hidden" asp-for="id_padre" value="@ViewBag.Padre">
                                         <div class="input-group mb-4">
-                                            <input class="form-control me-2" type="search" asp-for="padre" placeholder="Padre" aria-label="Search">
+                                            <input class="form-control me-2" type="search" asp-for="padre" placeholder="Padre" aria-label="Search" required>
                                             <div class="input-group-append">
                                                 <input class="btn btn-success" type="submit" asp-for="btn_padre" value="Buscar">
                                             </div>
@@ -29,7 +29,7 @@
                                     <div class="col-6">
                                         <input type="hidden" asp-for="id_madre" value="@ViewBag.Madre">
                                         <div class="input-group mb-4">
-                                            <input class="form-control me-2" type="search" asp-for="madre" placeholder="Madre" aria-label="Search">
+                                            <input class="form-control me-2" type="search" asp-for="madre" placeholder="Madre" aria-label="Search" required>
                                             <div class="input-group-append">
                                                 <input class="btn btn-success" type="submit" asp-for="btn_madre" value="Buscar">
                                             </div>
@@ -38,13 +38,13 @@
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-6">
-                                        <label for="edad" class="form-label">Edad</label>
+                                        <label for="edad" class="form-label" required>Edad</label>
                                         <input type="number" class="form-control" asp-for="edad" min="0" max="20">
                                     </div>
                                     <div class="col-6">
                                         <br>
-                                        <select class="form-control mt-2" title="Raza" asp-for="id_raza">
-                                            <option selected>Raza</option>
+                                        <select class="form-control mt-2" title="Raza" asp-for="id_raza" required>
+                                            <option value="">Raza</option>
                                             @foreach (var item in ViewBag.Raza)
                                             {
                                                 <option value="@item.id_raza">@item.nombre</option>
@@ -54,15 +54,15 @@
                                 </div>
                                 <input type="hidden" asp-for="id_criador" value="@ViewBag.Criador">
                                 <div class="input-group mb-4">
-                                    <input class="form-control me-2" type="search" asp-for="criador" placeholder="Criador" aria-label="Search">
+                                    <input class="form-control me-2" type="search" asp-for="criador" placeholder="Criador" aria-label="Search" required>
                                     <div class="input-group-append">
                                         <input class="btn btn-success" type="submit" asp-for="btn_criador" value="Buscar">
                                     </div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-6">
-                                        <select class="form-control" title="Variedad" asp-for="id_variedad">
-                                            <option selected>Variedad</option>
+                                        <select class="form-control" title="Variedad" asp-for="id_variedad" required>
+                                            <option value="">Variedad</option>
                                             @foreach (var item in ViewBag.Variedad)
                                             {
                                                 <option value="@item.id_variedad">@item.nombre</option>
@@ -70,8 +70,8 @@
                                         </select>
                                     </div>
                                     <div class="col-6">
-                                        <select class="form-control" aria-label="color" asp-for="id_color">
-                                            <option selected>Color</option>
+                                        <select class="form-control" aria-label="color" asp-for="id_color" required>
+                                            <option value="">Color</option>
                                             @foreach (var item in ViewBag.Color)
                                             {
                                                 <option value="@item.id_color">@item.nombre</option>
