@@ -13,8 +13,8 @@
                                     <b class="text-info">@ViewBag.Message</b>
                                 </div>
                                 <div class="mb-4">
-                                    <label for="nombre" class="form-label" required>Nombre</label>
-                                    <input type="text" class="form-control" asp-for="nombre" maxlength="50">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" asp-for="nombre" maxlength="50" required>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-6">
@@ -38,8 +38,8 @@
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-6">
-                                        <label for="edad" class="form-label" required>Edad</label>
-                                        <input type="number" class="form-control" asp-for="edad" min="0" max="20">
+                                        <label for="edad" class="form-label">Edad</label>
+                                        <input type="number" class="form-control" asp-for="edad" min="0" max="20" required>
                                     </div>
                                     <div class="col-6">
                                         <br>

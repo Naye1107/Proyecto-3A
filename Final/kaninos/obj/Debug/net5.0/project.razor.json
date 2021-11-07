@@ -15724,6 +15724,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\proyectos\\HTML\\Html Proyecto Integrador\\Final\\kaninos\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\proyectos\\HTML\\Html Proyecto Integrador\\Final\\kaninos\\Views\\Template\\_CrucesLayout.cshtml",
       "TargetPath": "Views\\Template\\_CrucesLayout.cshtml",
       "FileKind": "mvc"
