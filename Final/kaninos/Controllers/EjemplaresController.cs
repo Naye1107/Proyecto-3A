@@ -296,36 +296,34 @@ namespace Kaninos.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult New(EjemplarDTO dto)
         {
+            var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
+            var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
+            var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);
+
             if(dto.btn_padre != null)
-            {
-                var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);            
-            
-                if (ejemplar != null)
+            {          
+                if (padre != null)
                     {
-                        ViewBag.Padre = ejemplar.id_ejemplar;
+                        ViewBag.Padre = padre.id_ejemplar;
 
                         ViewBag.Message="Busqueda exitosa";
                     }else
                     {
-                        ViewBag.Message="No encontramos al Ejemplar solicitado";
+                        ViewBag.Message="No encontramos el dato solicitado. Campo: Padre";
                     }
             }else if(dto.btn_madre != null)
             {
-                var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);            
-            
-                if (ejemplar != null)
+                if (madre != null)
                     {
-                        ViewBag.Madre = ejemplar.id_ejemplar;
+                        ViewBag.Madre = madre.id_ejemplar;
 
                         ViewBag.Message="Busqueda exitosa";
                     }else
                     {
-                        ViewBag.Message="No encontramos al Criador solicitado";
+                        ViewBag.Message="No encontramos el dato solicitado. Campo: Madre";
                     }
             }else if (dto.btn_criador != null)
             {
-                var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);            
-            
                 if (criador != null)
                     {
                         ViewBag.Criador = criador.id_criador;
@@ -333,37 +331,52 @@ namespace Kaninos.Controllers
                         ViewBag.Message="Busqueda exitosa";
                     }else
                     {
-                        ViewBag.Message="No encontramos al Criador solicitado";
+                        ViewBag.Message="No encontramos el dato solicitado. Campo: Criador";
                     }
             } else if (dto.btn_reg != null)
             {
                 var nombre_foto = UploadPhoto(dto.foto);
-
-                var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
-                var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
-                var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);
-
-                var ejemplar = new Ejemplar
+                
+                if(padre != null && madre != null && criador != null)
                 {
-                    nombre = dto.nombre,
-                    id_padre = padre.id_ejemplar,
-                    id_madre = madre.id_ejemplar,
-                    edad = dto.edad,
-                    id_raza = dto.id_raza,
-                    id_criador = criador.id_criador,
-                    id_variedad = dto.id_variedad,
-                    id_color = dto.id_color,
-                    descripcion = dto.descripcion,
-                    foto_ejemplar = nombre_foto,
-                    is_deleted = 0,
-                    created_date = DateTime.Now,
-                    modified_date = null
-                };
+                    var ejemplar = new Ejemplar
+                    {
+                        nombre = dto.nombre,
+                        id_padre = padre.id_ejemplar,
+                        id_madre = madre.id_ejemplar,
+                        edad = dto.edad,
+                        id_raza = dto.id_raza,
+                        id_criador = criador.id_criador,
+                        id_variedad = dto.id_variedad,
+                        id_color = dto.id_color,
+                        descripcion = dto.descripcion,
+                        foto_ejemplar = nombre_foto,
+                        is_deleted = 0,
+                        created_date = DateTime.Now,
+                        modified_date = null
+                    };
 
-                _dbContext.Ejemplares.Add(ejemplar);
-                _dbContext.SaveChanges();
+                    _dbContext.Ejemplares.Add(ejemplar);
+                    _dbContext.SaveChanges();
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }else
+                {
+                    if (padre == null)
+                    {
+                        ViewBag.Message="No encontramos el dato solicitado. Campo: Padre";
+                    }
+
+                    if (madre == null)
+                    {
+                        ViewBag.Message="No encontramos el dato solicitado. Campo: Madre";
+                    }
+
+                    if (criador == null)
+                    {
+                        ViewBag.Message="No encontramos el dato solicitado. Campo: Criador";
+                    }
+                }
             }
 
             var raza = _dbContext.Razas.Select(raza => new RazaDTO
