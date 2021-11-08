@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Kaninos.Controllers
 {
@@ -336,8 +337,8 @@ namespace Kaninos.Controllers
             } else if (dto.btn_reg != null)
             {
                 var nombre_foto = UploadPhoto(dto.foto);
-                
-                if(padre != null && madre != null && criador != null)
+
+                if(padre != null && madre != null && criador != null && Regex.IsMatch(dto.nombre, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC]+$"))
                 {
                     var ejemplar = new Ejemplar
                     {
@@ -369,12 +370,17 @@ namespace Kaninos.Controllers
 
                     if (madre == null)
                     {
-                        ViewBag.Message="No encontramos el dato solicitado. Campo: Madre";
+                        ViewBag.Message0="No encontramos el dato solicitado. Campo: Madre";
                     }
 
                     if (criador == null)
                     {
-                        ViewBag.Message="No encontramos el dato solicitado. Campo: Criador";
+                        ViewBag.Message1="No encontramos el dato solicitado. Campo: Criador";
+                    }
+                    
+                    if (!Regex.IsMatch(dto.nombre, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC]+$"))
+                    {
+                        ViewBag.Message2="Caracteres no validos. Campo: Nombre";
                     }
                 }
             }
