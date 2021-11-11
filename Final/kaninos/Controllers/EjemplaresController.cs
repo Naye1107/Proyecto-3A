@@ -18,18 +18,31 @@ namespace Kaninos.Controllers
     {
         private string UploadPhoto(IFormFile file)
         {
-            if(file == null)
-            {
-                return "not-found.png";
-            }
+            var fileName = string.Empty;
+            fileName = $"{Guid.NewGuid()}_{file.FileName.Trim()}";
+
+            string uploadFolder = Path.Combine(_hosting.WebRootPath, "image/usr");
+            var filePath = Path.Combine(uploadFolder, fileName);
+
+            file.CopyTo(new FileStream(filePath, FileMode.Create));
+            return fileName;
+        }
+
+        private bool IsImage(IFormFile file)
+        {
+            string[] images = { ".png", ".jpg", ".jpeg", ".gif" };
 
             var fileName = string.Empty;
-            string uploadFolder = Path.Combine(_hosting.WebRootPath, "image/usr");
-                fileName = $"{Guid.NewGuid()}_{file.FileName.Trim()}";
-                var filePath = Path.Combine(uploadFolder, fileName);
+            fileName = file.FileName.Trim();
 
-                file.CopyTo(new FileStream(filePath, FileMode.Create));
-                return fileName;
+            if (images.Contains(Path.GetExtension(fileName)))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     
         private readonly ApplicationDbContext _dbContext;
@@ -297,94 +310,6 @@ namespace Kaninos.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult New(EjemplarDTO dto)
         {
-            var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
-            var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
-            var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);
-
-            if(dto.btn_padre != null)
-            {          
-                if (padre != null)
-                    {
-                        ViewBag.Padre = padre.id_ejemplar;
-
-                        ViewBag.Message="Busqueda exitosa";
-                    }else
-                    {
-                        ViewBag.Message="No encontramos el dato solicitado. Campo: Padre";
-                    }
-            }else if(dto.btn_madre != null)
-            {
-                if (madre != null)
-                    {
-                        ViewBag.Madre = madre.id_ejemplar;
-
-                        ViewBag.Message="Busqueda exitosa";
-                    }else
-                    {
-                        ViewBag.Message="No encontramos el dato solicitado. Campo: Madre";
-                    }
-            }else if (dto.btn_criador != null)
-            {
-                if (criador != null)
-                    {
-                        ViewBag.Criador = criador.id_criador;
-
-                        ViewBag.Message="Busqueda exitosa";
-                    }else
-                    {
-                        ViewBag.Message="No encontramos el dato solicitado. Campo: Criador";
-                    }
-            } else if (dto.btn_reg != null)
-            {
-                var nombre_foto = UploadPhoto(dto.foto);
-
-                if(padre != null && madre != null && criador != null && Regex.IsMatch(dto.nombre, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC]+$"))
-                {
-                    var ejemplar = new Ejemplar
-                    {
-                        nombre = dto.nombre,
-                        id_padre = padre.id_ejemplar,
-                        id_madre = madre.id_ejemplar,
-                        edad = dto.edad,
-                        id_raza = dto.id_raza,
-                        id_criador = criador.id_criador,
-                        id_variedad = dto.id_variedad,
-                        id_color = dto.id_color,
-                        descripcion = dto.descripcion,
-                        foto_ejemplar = nombre_foto,
-                        is_deleted = 0,
-                        created_date = DateTime.Now,
-                        modified_date = null
-                    };
-
-                    _dbContext.Ejemplares.Add(ejemplar);
-                    _dbContext.SaveChanges();
-
-                    return RedirectToAction("Index");
-                }else
-                {
-                    if (padre == null)
-                    {
-                        ViewBag.Message="No encontramos el dato solicitado. Campo: Padre";
-                    }
-
-                    if (madre == null)
-                    {
-                        ViewBag.Message0="No encontramos el dato solicitado. Campo: Madre";
-                    }
-
-                    if (criador == null)
-                    {
-                        ViewBag.Message1="No encontramos el dato solicitado. Campo: Criador";
-                    }
-                    
-                    if (!Regex.IsMatch(dto.nombre, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC]+$"))
-                    {
-                        ViewBag.Message2="Caracteres no validos. Campo: Nombre";
-                    }
-                }
-            }
-
             var raza = _dbContext.Razas.Select(raza => new RazaDTO
             {
                 id_raza = raza.id_raza,
@@ -407,6 +332,105 @@ namespace Kaninos.Controllers
             ViewBag.Variedad = variedad;
             ViewBag.Color = color;
 
+            var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
+            if (padre == null)
+            {
+                ViewBag.Message0="No encontramos el dato solicitado. Campo: Padre";
+            }
+
+            var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
+            if (madre == null)
+            {
+                ViewBag.Message1="No encontramos el dato solicitado. Campo: Madre";
+            }
+
+            var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);
+            if (criador == null)
+            {
+                ViewBag.Message2="No encontramos el dato solicitado. Campo: Criador";
+            }
+ 
+            if (!Regex.IsMatch(dto.nombre, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$"))
+            {
+                ViewBag.Message3="Caracteres no validos. Campo: Nombre";
+            }
+
+            if (!Regex.IsMatch(dto.descripcion, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$"))
+            {
+                ViewBag.Message4="Caracteres no validos. Campo: Descripcion";
+            }
+
+            var nombre_foto = "not-found.png";
+            if(dto.foto != null)
+            {    
+                if (IsImage(dto.foto))
+                {
+                    nombre_foto = UploadPhoto(dto.foto);
+                }
+                else
+                {
+                    ViewBag.Message="Formato de archivo incorrecto. Campo: Fotografia";
+                    return View();
+                }
+            }
+
+            if(dto.btn_padre != null)
+            {          
+                if (padre != null)
+                {
+                    ViewBag.Padre = padre.id_ejemplar;
+
+                    ViewBag.Message="Busqueda exitosa";
+                }else
+                {
+                    ViewBag.Message="No encontramos el dato solicitado. Campo: Padre";
+                }
+            }else if(dto.btn_madre != null)
+            {
+                if (madre != null)
+                {
+                    ViewBag.Madre = madre.id_ejemplar;
+
+                    ViewBag.Message="Busqueda exitosa";
+                }else
+                {
+                    ViewBag.Message="No encontramos el dato solicitado. Campo: Madre";
+                }
+            }else if (dto.btn_criador != null)
+            {
+                if (criador != null)
+                {
+                    ViewBag.Criador = criador.id_criador;
+
+                    ViewBag.Message="Busqueda exitosa";
+                }else
+                {
+                    ViewBag.Message="No encontramos el dato solicitado. Campo: Criador";
+                }
+            } else if (dto.btn_reg != null && padre != null && madre != null && criador != null && Regex.IsMatch(dto.nombre, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$") && Regex.IsMatch(dto.descripcion, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$"))
+            {
+                var ejemplar = new Ejemplar
+                {
+                    nombre = dto.nombre,
+                    id_padre = padre.id_ejemplar,
+                    id_madre = madre.id_ejemplar,
+                    edad = dto.edad,
+                    id_raza = dto.id_raza,
+                    id_criador = criador.id_criador,
+                    id_variedad = dto.id_variedad,
+                    id_color = dto.id_color,
+                    descripcion = dto.descripcion,
+                    foto_ejemplar = nombre_foto,
+                    is_deleted = 0,
+                    created_date = DateTime.Now,
+                    modified_date = null
+                };
+
+                _dbContext.Ejemplares.Add(ejemplar);
+                _dbContext.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
             return View();
         }
     }
