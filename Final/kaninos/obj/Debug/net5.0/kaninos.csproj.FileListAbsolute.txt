@@ -9,7 +9,6 @@ D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\ref\ka
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\kaninos.pdb
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\kaninos.Views.dll
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\kaninos.Views.pdb
-D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\kaninos.csprojAssemblyReference.cache
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\kaninos.GeneratedMSBuildEditorConfig.editorconfig
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\kaninos.AssemblyInfoInputs.cache
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\kaninos.AssemblyInfo.cs
@@ -512,3 +511,4 @@ C:\Users\Alguien\Documents\3er Cuatri\proy\Proyecto\Final\kaninos\obj\Debug\net5
 C:\Users\Alguien\Documents\3er Cuatri\proy\Proyecto\Final\kaninos\obj\Debug\net5.0\kaninos.pdb
 C:\Users\Alguien\Documents\3er Cuatri\proy\Proyecto\Final\kaninos\obj\Debug\net5.0\kaninos.genruntimeconfig.cache
 D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\proyectos\HTML\Html Proyecto Integrador\Final\kaninos\obj\Debug\net5.0\kaninos.csproj.AssemblyReference.cache
