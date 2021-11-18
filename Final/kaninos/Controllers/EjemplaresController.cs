@@ -426,8 +426,8 @@ namespace Kaninos.Controllers
                     modified_date = null
                 };
 
-                _dbContext.Ejemplares.Add(ejemplar);
-                _dbContext.SaveChanges();
+                //_dbContext.Ejemplares.Add(ejemplar);
+                //_dbContext.SaveChanges();
 
                 return RedirectToAction("Index");
 
