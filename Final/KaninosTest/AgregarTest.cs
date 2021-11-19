@@ -240,7 +240,7 @@ namespace KaninosTest
                 id_variedad = 0,
                 id_color = 0,
                 descripcion = string.Empty,
-                foto_ejemplar = string.Empty,
+                foto_ejemplar = null,
             };
             var expected = false;
 
