@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3n4mjGEwTjJJHCO3ECptENJTTJCvQ7rKfIuWc6WVEkOgI21qsix9IvyZz/blFkgc2WHLuYx2oxGbNzKkhqHjOg==",
+  "dgSpecHash": "4y5cQ+uPDEjbwc/aYKb2hur9wajENIniOBn4ta98i0j7sA1SjSO9vpreXdCYTmqQ9PO/7C7wE0PDf20U2gIGaQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\KaninosTest\\KaninosTest.csproj",
+  "projectFilePath": "C:\\Users\\live\\source\\repos\\Proyecto-3A\\Final\\KaninosTest\\KaninosTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\live\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\live\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",

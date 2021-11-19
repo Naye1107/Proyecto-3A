@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj": {}
+    "C:\\Users\\live\\source\\repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj": {
+    "C:\\Users\\live\\source\\repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj",
+        "projectUniqueName": "C:\\Users\\live\\source\\repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj",
         "projectName": "kaninos",
-        "projectPath": "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj",
+        "projectPath": "C:\\Users\\live\\source\\repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj",
         "packagesPath": "C:\\Users\\live\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\kaninos\\obj\\",
+        "outputPath": "C:\\Users\\live\\source\\repos\\Proyecto-3A\\Final\\kaninos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\live\\AppData\\Roaming\\NuGet\\NuGet.Config",

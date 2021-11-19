@@ -9967,11 +9967,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\KaninosTest\\KaninosTest.csproj",
+      "projectUniqueName": "C:\\Users\\live\\source\\repos\\Proyecto-3A\\Final\\KaninosTest\\KaninosTest.csproj",
       "projectName": "KaninosTest",
-      "projectPath": "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\KaninosTest\\KaninosTest.csproj",
+      "projectPath": "C:\\Users\\live\\source\\repos\\Proyecto-3A\\Final\\KaninosTest\\KaninosTest.csproj",
       "packagesPath": "C:\\Users\\live\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\KaninosTest\\obj\\",
+      "outputPath": "C:\\Users\\live\\source\\repos\\Proyecto-3A\\Final\\KaninosTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\live\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9988,8 +9988,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj": {
-              "projectPath": "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj"
+            "C:\\Users\\live\\source\\repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj": {
+              "projectPath": "C:\\Users\\live\\source\\repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj"
             }
           }
         }
