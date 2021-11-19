@@ -23,11 +23,11 @@ namespace KaninosTest
         public Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment { get;}
         
         [TestMethod]
-        public void Agregar_camposLlenos_deveriaRegresarnosAlIndex()
+        public void formatoDescripcion_deveriaComprovarQueLaDescripcionCumplaConElFormatoyDevolverUnBool()
         {
             //arrange
             var dto = new EjemplarDTO{
-                nombre = "S",
+                nombre = "Solovino II",
                 id_padre = 1,
                 id_madre = 3,
                 edad = 10,
@@ -35,17 +35,166 @@ namespace KaninosTest
                 id_criador = 1,
                 id_variedad = 1,
                 id_color = 1,
-                descripcion = "T",
+                descripcion = "Tierno y esponjoso",
+                foto_ejemplar = null,
+            };
+            var expected = true;
+
+            //act
+            EjemplaresController controller = new EjemplaresController(dbContext, HostingEnvironment);
+            var result = controller.formatoDescripcion(dto);
+            
+            //assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void formatoNombre_deveriaComprovarQueElNombreCumplaConElFormatoyDevolverUnBool()
+        {
+            //arrange
+            var dto = new EjemplarDTO
+            {
+                nombre = "Solovino II",
+                id_padre = 1,
+                id_madre = 3,
+                edad = 10,
+                id_raza = 1,
+                id_criador = 1,
+                id_variedad = 1,
+                id_color = 1,
+                descripcion = "Tierno y esponjoso",
+                foto_ejemplar = null,
+            };
+            var expected = true;
+
+            //act
+            EjemplaresController controller = new EjemplaresController(dbContext, HostingEnvironment);
+            var result = controller.formatoNombre(dto);
+
+            //assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void criadorExist_deveriaComprovarQueElCriadorExistayDevolverUnObjetoDeTipoCriador()
+        {
+            //arrange
+            var dto = new EjemplarDTO
+            {
+                nombre = "Solovino II",
+                id_padre = 1,
+                id_madre = 3,
+                edad = 10,
+                id_raza = 1,
+                id_criador = 1,
+                id_variedad = 1,
+                id_color = 1,
+                descripcion = "Tierno y esponjoso",
                 foto_ejemplar = null,
             };
 
             //act
             EjemplaresController controller = new EjemplaresController(dbContext, HostingEnvironment);
-            var result = controller.New(dto) as ViewResult;
-            
+            var result = controller.criadorExist(dto);
+
             //assert
-            var model = result.Model;
-            Assert.IsNull(model);
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void madreExist_deveriaComprovarQueLaMadreExistayDevolverUnObjetoDeTipoEjemplar()
+        {
+            //arrange
+            var dto = new EjemplarDTO
+            {
+                nombre = "Solovino II",
+                id_padre = 1,
+                id_madre = 3,
+                edad = 10,
+                id_raza = 1,
+                id_criador = 1,
+                id_variedad = 1,
+                id_color = 1,
+                descripcion = "Tierno y esponjoso",
+                foto_ejemplar = null,
+            };
+
+            //act
+            EjemplaresController controller = new EjemplaresController(dbContext, HostingEnvironment);
+            var result = controller.madreExist(dto);
+
+            //assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void padreExist_deveriaComprovarQueElPadreExistayDevolverUnObjetoDeTipoEjemplar()
+        {
+            //arrange
+            var dto = new EjemplarDTO
+            {
+                nombre = "Solovino II",
+                id_padre = 1,
+                id_madre = 3,
+                edad = 10,
+                id_raza = 1,
+                id_criador = 1,
+                id_variedad = 1,
+                id_color = 1,
+                descripcion = "Tierno y esponjoso",
+                foto_ejemplar = null,
+            };
+
+            //act
+            EjemplaresController controller = new EjemplaresController(dbContext, HostingEnvironment);
+            var result = controller.padreExist(dto);
+
+            //assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void insertToDB_deveriaComprovarQueSeInserteEnLaBDyDevolverUnBool()
+        {
+            //arrange
+            var dto = new EjemplarDTO
+            {
+                nombre = "Solovino II",
+                id_padre = 1,
+                id_madre = 3,
+                edad = 10,
+                id_raza = 1,
+                id_criador = 1,
+                id_variedad = 1,
+                id_color = 1,
+                descripcion = "Tierno y esponjoso",
+                foto_ejemplar = null,
+            };
+
+            var padre = new Ejemplar
+            {
+                id_ejemplar = 1
+            };
+
+            var madre = new Ejemplar
+            {
+                id_ejemplar = 3
+            };
+
+            var criador = new Criador
+            {
+                id_criador = 1
+            };
+
+            string nombre_foto = "not-found.png";
+            var expected = true;
+
+            //act
+            EjemplaresController controller = new EjemplaresController(dbContext, HostingEnvironment);
+            var result = controller.insertToDB(dto,padre,madre,criador,nombre_foto);
+
+            //assert
+            Assert.AreEqual(expected, result);
         }
     }
 }

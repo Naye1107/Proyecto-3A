@@ -16,35 +16,6 @@ namespace Kaninos.Controllers
 {
     public class EjemplaresController : Controller
     {
-        private string UploadPhoto(IFormFile file)
-        {
-            var fileName = string.Empty;
-            fileName = $"{Guid.NewGuid()}_{file.FileName.Trim()}";
-
-            string uploadFolder = Path.Combine(_hosting.WebRootPath, "image/usr");
-            var filePath = Path.Combine(uploadFolder, fileName);
-
-            file.CopyTo(new FileStream(filePath, FileMode.Create));
-            return fileName;
-        }
-
-        private bool IsImage(IFormFile file)
-        {
-            string[] images = { ".png", ".jpg", ".jpeg", ".gif" };
-
-            var fileName = string.Empty;
-            fileName = file.FileName.Trim();
-
-            if (images.Contains(Path.GetExtension(fileName)))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    
         private readonly ApplicationDbContext _dbContext;
         private readonly IWebHostEnvironment _hosting;
         public EjemplaresController(ApplicationDbContext dbContext, IWebHostEnvironment hostEnvironment)
@@ -52,7 +23,8 @@ namespace Kaninos.Controllers
             _dbContext = dbContext;
             _hosting = hostEnvironment;
         }
-
+        
+        #region cosas que no sirven por ahora
         public IActionResult Index()
         {
             var ejemplar =_dbContext.Ejemplares.Select(dto => new EjemplarDTO
@@ -278,7 +250,8 @@ namespace Kaninos.Controllers
 
             return RedirectToAction("Index");
         }
-
+        #endregion
+        
         public IActionResult New()
         {
             var raza = _dbContext.Razas.Select(raza => new RazaDTO
@@ -332,30 +305,30 @@ namespace Kaninos.Controllers
             ViewBag.Variedad = variedad;
             ViewBag.Color = color;
 
-            var padre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
+            var padre = padreExist(dto);
             if (padre == null)
             {
                 ViewBag.Message0="No encontramos el dato solicitado. Campo: Padre";
             }
 
-            var madre =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
+            var madre = madreExist(dto);
             if (madre == null)
             {
                 ViewBag.Message1="No encontramos el dato solicitado. Campo: Madre";
             }
 
-            var criador =_dbContext.Criadores.FirstOrDefault(criador => criador.nombre == dto.criador);
+            var criador = criadorExist(dto);
             if (criador == null)
             {
                 ViewBag.Message2="No encontramos el dato solicitado. Campo: Criador";
             }
  
-            if (!Regex.IsMatch(dto.nombre, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$"))
+            if (!formatoNombre(dto))
             {
                 ViewBag.Message3="Caracteres no validos. Campo: Nombre";
             }
 
-            if (!Regex.IsMatch(dto.descripcion, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$"))
+            if (!formatoDescripcion(dto))
             {
                 ViewBag.Message4="Caracteres no validos. Campo: Descripcion";
             }
@@ -407,7 +380,102 @@ namespace Kaninos.Controllers
                 {
                     ViewBag.Message="No encontramos el dato solicitado. Campo: Criador";
                 }
-            } else if (dto.btn_reg != null && padre != null && madre != null && criador != null && Regex.IsMatch(dto.nombre, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$") && Regex.IsMatch(dto.descripcion, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$"))
+            } else if (dto.btn_reg != null && insertToDB(dto, padre, madre, criador, nombre_foto))
+            {
+                return RedirectToAction("Index");
+
+                //return View(ejemplar);
+            }
+            return View();
+        }
+
+        public bool formatoDescripcion(EjemplarDTO dto)
+        {
+            bool result = false;
+            
+            try
+            {
+                if(Regex.IsMatch(dto.descripcion, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$"))
+                {
+                    result = true;
+                }
+            }
+            catch(Exception)
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public bool formatoNombre(EjemplarDTO dto)
+        {
+            bool result = false;
+
+            try
+            {
+                if(Regex.IsMatch(dto.nombre, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$"))
+                {
+                    result = true;
+                }
+            }
+            catch(Exception)
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public Criador criadorExist(EjemplarDTO dto)
+        {
+            try
+            {
+                var criador = _dbContext.Criadores.FirstOrDefault(x => x.nombre == dto.criador);
+                return criador;
+            }
+            catch(Exception)
+            {
+                return null;
+            }
+        }
+
+        public Ejemplar madreExist(EjemplarDTO dto)
+        {
+            try
+            {
+                var madre = _dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.madre);
+                return madre;
+            }
+            catch(Exception)
+            {
+                return null;
+            }
+        }
+
+        public Ejemplar padreExist(EjemplarDTO dto)
+        {
+            try
+            {
+                var padre = _dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.nombre == dto.padre);
+                return padre;
+            }
+            catch(Exception)
+            {
+                return null;
+            }
+        }
+
+        public bool insertToDB(EjemplarDTO dto, Ejemplar padre, Ejemplar madre, Criador criador, String nombre_foto)
+        {
+            bool result = false;
+
+            if (dto.btn_reg == null || padre == null || madre == null || criador == null || dto.nombre == String.Empty || dto.descripcion == String.Empty)
+            {
+                return result;
+            }
+
+            if (Regex.IsMatch(dto.nombre, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$") && Regex.IsMatch(dto.descripcion, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$"))
             {
                 var ejemplar = new Ejemplar
                 {
@@ -426,14 +494,61 @@ namespace Kaninos.Controllers
                     modified_date = null
                 };
 
-                //_dbContext.Ejemplares.Add(ejemplar);
-                //_dbContext.SaveChanges();
-
-                return RedirectToAction("Index");
-
-                //return View(ejemplar);
+                try
+                {
+                    _dbContext.Ejemplares.Add(ejemplar);
+                    _dbContext.SaveChanges();
+                    result = true;
+                }
+                catch (Exception)
+                {
+                    result = false;
+                }
             }
-            return View();
+            return result;
+        }
+
+        private string UploadPhoto(IFormFile file)
+        {
+            var fileName = string.Empty;
+            fileName = $"{Guid.NewGuid()}_{file.FileName.Trim()}";
+
+            string uploadFolder = Path.Combine(_hosting.WebRootPath, "image/usr");
+            var filePath = Path.Combine(uploadFolder, fileName);
+
+            try
+            {
+                file.CopyTo(new FileStream(filePath, FileMode.Create));
+                return fileName;
+            }
+            catch(Exception)
+            {
+                return string.Empty;
+            }
+        }
+
+        private bool IsImage(IFormFile file)
+        {
+            string[] images = { ".png", ".jpg", ".jpeg", ".gif" };
+
+            var fileName = string.Empty;
+            fileName = file.FileName.Trim();
+
+            try
+            {
+                if (images.Contains(Path.GetExtension(fileName)))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch(Exception)
+            {
+                return false;
+            }
         }
     }
 }
