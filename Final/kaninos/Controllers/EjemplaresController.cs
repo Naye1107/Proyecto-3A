@@ -211,6 +211,11 @@ namespace Kaninos.Controllers
             return View(dto);
         }
 
+        public object insertToDB(EjemplarDTO dto, object padre, object madre, object criador, object nombre_foto)
+        {
+            throw new NotImplementedException();
+        }
+
         public IActionResult Delete(int id)
         {
             var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == id);

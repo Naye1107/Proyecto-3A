@@ -199,6 +199,59 @@ namespace KaninosTest
             Assert.AreEqual(expected, result);
         }
 
+        [TestMethod]
+        public void formatoDescripcion_camposvaciosOnulos()
+        {
+            //arrange
+            var dto = new EjemplarDTO
+            {
+                nombre = string.Empty,
+                padre = string.Empty,
+                madre = string.Empty,
+                edad = 0,
+                id_raza = 0,
+                criador = string.Empty,
+                id_variedad = 0,
+                id_color = 0,
+                descripcion = string.Empty,
+                foto_ejemplar = null,
+            };
+            var expected = false;
+
+            //act
+            EjemplaresController controller = new EjemplaresController(dbContext, HostingEnvironment);
+            var result = controller.formatoDescripcion(dto);
+
+            //assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void formatoDescripcion_camposmediollenos()
+        {
+            //arrange
+            var dto = new EjemplarDTO
+            {
+                nombre = "Raul",
+                madre = "Yessica",
+                edad = 2,
+                id_raza = 6,
+                criador = string.Empty,
+                id_variedad = 0,
+                id_color = 0,
+                descripcion = string.Empty,
+                foto_ejemplar = string.Empty,
+            };
+            var expected = false;
+
+            //act
+            EjemplaresController controller = new EjemplaresController(dbContext, HostingEnvironment);
+            var result = controller.formatoDescripcion(dto);
+
+            //assert
+            Assert.AreEqual(expected, result);
+        }
+
         #endregion
     }
 }
