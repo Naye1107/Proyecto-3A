@@ -389,6 +389,8 @@ namespace Kaninos.Controllers
             return View();
         }
 
+        #region funciones
+
         public bool formatoDescripcion(EjemplarDTO dto)
         {
             bool result = false;
@@ -470,7 +472,7 @@ namespace Kaninos.Controllers
         {
             bool result = false;
 
-            if (dto.btn_reg == null || padre == null || madre == null || criador == null || dto.nombre == String.Empty || dto.descripcion == String.Empty)
+            if (padre == null || madre == null || criador == null ||dto.nombre == string.Empty || dto.descripcion == string.Empty)
             {
                 return result;
             }
@@ -550,5 +552,7 @@ namespace Kaninos.Controllers
                 return false;
             }
         }
+        
+        #endregion
     }
 }

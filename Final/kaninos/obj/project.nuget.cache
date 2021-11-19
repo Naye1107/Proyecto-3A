@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Be7UPhYTa2k2rOBmeCNhjotueZ/mdhRN1xhwcbSq4Q0eBeK+MMTVDhHYv+iDM9ns6SONSUL3ZbeEYyaPdot7PQ==",
+  "dgSpecHash": "EOoUHqwOkAyl2KAPD67uGLE1sPJ1IopaYL6Ogrkf8CS5P0yU5vbVKvXguUGzRFAafiOCjqADLuA9NQ8uePIuMQ==",
   "success": true,
-  "projectFilePath": "D:\\proyectos\\HTML\\Html Proyecto Integrador\\Final\\kaninos\\kaninos.csproj",
+  "projectFilePath": "D:\\proyectos\\HTML\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\danie\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

@@ -22,17 +22,19 @@ namespace KaninosTest
 
         public Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment { get;}
         
+        #region validacion de datos llenos
+
         [TestMethod]
         public void formatoDescripcion_deveriaComprovarQueLaDescripcionCumplaConElFormatoyDevolverUnBool()
         {
             //arrange
             var dto = new EjemplarDTO{
                 nombre = "Solovino II",
-                id_padre = 1,
-                id_madre = 3,
+                padre = "copito",
+                madre = "copito II",
                 edad = 10,
                 id_raza = 1,
-                id_criador = 1,
+                criador = "Daniel",
                 id_variedad = 1,
                 id_color = 1,
                 descripcion = "Tierno y esponjoso",
@@ -55,11 +57,11 @@ namespace KaninosTest
             var dto = new EjemplarDTO
             {
                 nombre = "Solovino II",
-                id_padre = 1,
-                id_madre = 3,
+                padre = "copito",
+                madre = "copito II",
                 edad = 10,
                 id_raza = 1,
-                id_criador = 1,
+                criador = "Daniel",
                 id_variedad = 1,
                 id_color = 1,
                 descripcion = "Tierno y esponjoso",
@@ -82,11 +84,11 @@ namespace KaninosTest
             var dto = new EjemplarDTO
             {
                 nombre = "Solovino II",
-                id_padre = 1,
-                id_madre = 3,
+                padre = "copito",
+                madre = "copito II",
                 edad = 10,
                 id_raza = 1,
-                id_criador = 1,
+                criador = "Daniel",
                 id_variedad = 1,
                 id_color = 1,
                 descripcion = "Tierno y esponjoso",
@@ -108,11 +110,11 @@ namespace KaninosTest
             var dto = new EjemplarDTO
             {
                 nombre = "Solovino II",
-                id_padre = 1,
-                id_madre = 3,
+                padre = "copito",
+                madre = "copito II",
                 edad = 10,
                 id_raza = 1,
-                id_criador = 1,
+                criador = "Daniel",
                 id_variedad = 1,
                 id_color = 1,
                 descripcion = "Tierno y esponjoso",
@@ -134,11 +136,11 @@ namespace KaninosTest
             var dto = new EjemplarDTO
             {
                 nombre = "Solovino II",
-                id_padre = 1,
-                id_madre = 3,
+                padre = "copito",
+                madre = "copito II",
                 edad = 10,
                 id_raza = 1,
-                id_criador = 1,
+                criador = "Daniel",
                 id_variedad = 1,
                 id_color = 1,
                 descripcion = "Tierno y esponjoso",
@@ -160,11 +162,11 @@ namespace KaninosTest
             var dto = new EjemplarDTO
             {
                 nombre = "Solovino II",
-                id_padre = 1,
-                id_madre = 3,
+                padre = "copito",
+                madre = "copito II",
                 edad = 10,
                 id_raza = 1,
-                id_criador = 1,
+                criador = "Daniel",
                 id_variedad = 1,
                 id_color = 1,
                 descripcion = "Tierno y esponjoso",
@@ -196,5 +198,7 @@ namespace KaninosTest
             //assert
             Assert.AreEqual(expected, result);
         }
+
+        #endregion
     }
 }

@@ -7155,11 +7155,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\proyectos\\HTML\\Html Proyecto Integrador\\Final\\kaninos\\kaninos.csproj",
+      "projectUniqueName": "D:\\proyectos\\HTML\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj",
       "projectName": "kaninos",
-      "projectPath": "D:\\proyectos\\HTML\\Html Proyecto Integrador\\Final\\kaninos\\kaninos.csproj",
+      "projectPath": "D:\\proyectos\\HTML\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj",
       "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-      "outputPath": "D:\\proyectos\\HTML\\Html Proyecto Integrador\\Final\\kaninos\\obj\\",
+      "outputPath": "D:\\proyectos\\HTML\\Proyecto-3A\\Final\\kaninos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
