@@ -211,11 +211,6 @@ namespace Kaninos.Controllers
             return View(dto);
         }
 
-        public object insertToDB(EjemplarDTO dto, object padre, object madre, object criador, object nombre_foto)
-        {
-            throw new NotImplementedException();
-        }
-
         public IActionResult Delete(int id)
         {
             var ejemplar =_dbContext.Ejemplares.FirstOrDefault(ejemplar => ejemplar.id_ejemplar == id);
@@ -310,20 +305,17 @@ namespace Kaninos.Controllers
             ViewBag.Variedad = variedad;
             ViewBag.Color = color;
 
-            var padre = padreExist(dto);
-            if (padre == null)
+            if (padreExist(dto) == null)
             {
                 ViewBag.Message0="No encontramos el dato solicitado. Campo: Padre";
             }
 
-            var madre = madreExist(dto);
-            if (madre == null)
+            if (madreExist(dto) == null)
             {
                 ViewBag.Message1="No encontramos el dato solicitado. Campo: Madre";
             }
 
-            var criador = criadorExist(dto);
-            if (criador == null)
+            if (criadorExist(dto) == null)
             {
                 ViewBag.Message2="No encontramos el dato solicitado. Campo: Criador";
             }
@@ -353,7 +345,8 @@ namespace Kaninos.Controllers
             }
 
             if(dto.btn_padre != null)
-            {          
+            {
+                var padre = padreExist(dto);
                 if (padre != null)
                 {
                     ViewBag.Padre = padre.id_ejemplar;
@@ -365,6 +358,7 @@ namespace Kaninos.Controllers
                 }
             }else if(dto.btn_madre != null)
             {
+                var madre = madreExist(dto);
                 if (madre != null)
                 {
                     ViewBag.Madre = madre.id_ejemplar;
@@ -376,6 +370,7 @@ namespace Kaninos.Controllers
                 }
             }else if (dto.btn_criador != null)
             {
+                var criador = criadorExist(dto);
                 if (criador != null)
                 {
                     ViewBag.Criador = criador.id_criador;
@@ -385,7 +380,7 @@ namespace Kaninos.Controllers
                 {
                     ViewBag.Message="No encontramos el dato solicitado. Campo: Criador";
                 }
-            } else if (dto.btn_reg != null && insertToDB(dto, padre, madre, criador, nombre_foto))
+            } else if (dto.btn_reg != null && insertToDB(dto, nombre_foto))
             {
                 return RedirectToAction("Index");
 
@@ -473,11 +468,14 @@ namespace Kaninos.Controllers
             }
         }
 
-        public bool insertToDB(EjemplarDTO dto, Ejemplar padre, Ejemplar madre, Criador criador, String nombre_foto)
+        public bool insertToDB(EjemplarDTO dto, String nombre_foto)
         {
             bool result = false;
+            var padre = padreExist(dto);
+            var madre = madreExist(dto);
+            var criador = criadorExist(dto);
 
-            if (padre == null || madre == null || criador == null ||dto.nombre == string.Empty || dto.descripcion == string.Empty)
+            if (padre == null || madre == null || criador == null ||dto.nombre == string.Empty || dto.descripcion == string.Empty || dto.edad <= 0 || dto.id_raza <= 0 || dto.id_variedad <= 0 || dto.id_color <= 0)
             {
                 return result;
             }
