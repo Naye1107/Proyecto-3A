@@ -9962,24 +9962,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\danie\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\live\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\proyectos\\HTML\\Proyecto-3A\\Final\\KaninosTest\\KaninosTest.csproj",
+      "projectUniqueName": "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\KaninosTest\\KaninosTest.csproj",
       "projectName": "KaninosTest",
-      "projectPath": "D:\\proyectos\\HTML\\Proyecto-3A\\Final\\KaninosTest\\KaninosTest.csproj",
-      "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
-      "outputPath": "D:\\proyectos\\HTML\\Proyecto-3A\\Final\\KaninosTest\\obj\\",
+      "projectPath": "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\KaninosTest\\KaninosTest.csproj",
+      "packagesPath": "C:\\Users\\live\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\KaninosTest\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\live\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9987,14 +9982,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\proyectos\\HTML\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj": {
-              "projectPath": "D:\\proyectos\\HTML\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj"
+            "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj": {
+              "projectPath": "C:\\Users\\live\\Source\\Repos\\Proyecto-3A\\Final\\kaninos\\kaninos.csproj"
             }
           }
         }
@@ -10041,7 +10036,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
