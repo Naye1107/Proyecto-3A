@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using kaninos;
-using Kaninos.Controllers;
 using kaninos.Entities;
 using kaninos.Models;
 using kaninos.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using kaninos.Controllers;
 
 namespace KaninosTest
 {
@@ -23,7 +23,7 @@ namespace KaninosTest
         public Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment { get; }
 
         [TestMethod]
-        public void formatoLoginvacio_Compruebaqueellogin_notedejepasarconloscamposvacíos()
+        public void formatoEmailexist_Compruebaqueellogin_notedejepasarconloscamposvacíos()
         {
             //arrange
             var dto = new LoginDTO
@@ -34,9 +34,11 @@ namespace KaninosTest
             var expected = false;
 
             //act
-            EjemplaresController controller = new EjemplaresController(dbContext, HostingEnvironment);
-            var result = controller.formatoLoginvacio(dto);
-
+            HomeController controller = new HomeController(dbContext, HostingEnvironment);
+            var result = controller.Emailexist(dto);
+        
             //assert
             Assert.AreEqual(expected, result);
         }
+    }
+}

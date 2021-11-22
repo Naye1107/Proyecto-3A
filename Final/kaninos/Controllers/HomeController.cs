@@ -9,6 +9,7 @@ using kaninos.Models;
 using kaninos.Data;
 using kaninos.Entities;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Hosting;
 
 namespace kaninos.Controllers
 {
@@ -18,12 +19,20 @@ namespace kaninos.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _dbContext;
+        private ApplicationDbContext dbContext;
+        private IWebHostEnvironment hostingEnvironment;
+
         public HomeController(ILogger<HomeController> logger, ApplicationDbContext dbContext)
         {
             _logger = logger;
             _dbContext = dbContext;
         }
 
+        public HomeController(ApplicationDbContext dbContext, IWebHostEnvironment hostingEnvironment)
+        {
+            this.dbContext = dbContext;
+            this.hostingEnvironment = hostingEnvironment;
+        }
 
         public IActionResult Index()
         {
@@ -117,12 +126,12 @@ namespace kaninos.Controllers
             ViewBag.pass = pass;
 
 
-            if (email(dto) == null)
+            if (Emailexist(dto) == null)
             {
                 ViewBag.Message0 = "Por favor, ingrese un correo valido";
             }
 
-            if (email(dto) == null)
+            if (CorrectPass(dto) == false)
             {
                 ViewBag.Message1 = "Por favor, ingrese una contraseña valida";
             }
@@ -132,7 +141,6 @@ namespace kaninos.Controllers
         #endregion
 
         #region funciones
-        //Login
         public bool emailvacio(LoginDTO dto)
         {
             bool result = false;
@@ -184,7 +192,6 @@ namespace kaninos.Controllers
 
             return result;
         }
-        //finlogin
         #endregion
       
     }
