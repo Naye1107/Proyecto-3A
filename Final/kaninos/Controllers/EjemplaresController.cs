@@ -480,7 +480,7 @@ namespace Kaninos.Controllers
                 return result;
             }
 
-            if (Regex.IsMatch(dto.nombre, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$") && Regex.IsMatch(dto.descripcion, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$"))
+            if (formatoDescripcion(dto) && formatoNombre(dto))
             {
                 var ejemplar = new Ejemplar
                 {

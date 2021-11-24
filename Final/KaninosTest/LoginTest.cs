@@ -23,7 +23,25 @@ namespace KaninosTest
         public Microsoft.AspNetCore.Hosting.IWebHostEnvironment HostingEnvironment { get; }
 
         [TestMethod]
-        public void formatoEmailexist_Compruebaqueellogin_notedejepasarconloscamposvacíos()
+        public void Emailexist_Compruebaqueellogin_notedejepasarconloscamposvacíos()
+        {
+            //arrange
+            var dto = new LoginDTO
+            {
+                email = null,
+                pass = null,
+            };
+
+            //act
+            HomeController controller = new HomeController(dbContext);
+            var result = controller.Emailexist(dto);
+        
+            //assert
+            Assert.IsNull(result);
+        }
+
+        [TestMethod]
+        public void formatoEmail_Compruebaqueellogin_notedejepasarconloscamposvacíos()
         {
             //arrange
             var dto = new LoginDTO
@@ -34,8 +52,27 @@ namespace KaninosTest
             var expected = false;
 
             //act
-            HomeController controller = new HomeController(dbContext, HostingEnvironment);
-            var result = controller.Emailexist(dto);
+            HomeController controller = new HomeController(dbContext);
+            var result = controller.formatoEmail(dto);
+        
+            //assert
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestMethod]
+        public void CorrectPass_Compruebaqueellogin_notedejepasarconloscamposvacíos()
+        {
+            //arrange
+            var dto = new LoginDTO
+            {
+                email = null,
+                pass = null,
+            };
+            var expected = false;
+
+            //act
+            HomeController controller = new HomeController(dbContext);
+            var result = controller.CorrectPass(dto);
         
             //assert
             Assert.AreEqual(expected, result);

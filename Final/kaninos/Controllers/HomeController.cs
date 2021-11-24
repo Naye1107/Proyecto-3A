@@ -17,21 +17,13 @@ namespace kaninos.Controllers
 
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _dbContext;
-        private ApplicationDbContext dbContext;
-        private IWebHostEnvironment hostingEnvironment;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext dbContext)
+        public HomeController(/*ILogger<HomeController> logger,*/ ApplicationDbContext dbContext)
         {
-            _logger = logger;
+            //_logger = logger;
             _dbContext = dbContext;
-        }
-
-        public HomeController(ApplicationDbContext dbContext, IWebHostEnvironment hostingEnvironment)
-        {
-            this.dbContext = dbContext;
-            this.hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Index()
@@ -47,22 +39,6 @@ namespace kaninos.Controllers
         public IActionResult Administrador()
         {
             return View();
-        }
-
-        public IActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Login(LoginDTO dto)
-        {
-            var login = _dbContext.Logins.FirstOrDefault(login => login.email == dto.email && login.pass == dto.pass);
-
-            ViewBag.Message = "Email y Contraseña No Coinciden";
-
-            return login == null ? View() : RedirectToAction("Administrador", "Home");
         }
 
         public IActionResult Registro()
@@ -108,46 +84,47 @@ namespace kaninos.Controllers
         }
 
         #region Login
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult New(LoginDTO dto)
+        public IActionResult Login(LoginDTO dto)
         {
-            var email = _dbContext.Logins.Select(email => new LoginDTO
+            if (formatoEmail(dto))
             {
-                email = email.email,
-            });
-
-            var pass = _dbContext.Logins.Select(pass => new LoginDTO
-            {
-                pass = pass.pass,
-            });
-
-            ViewBag.email = email;
-            ViewBag.pass = pass;
-
+                ViewBag.Message = "Por favor, ingrese un correo valido";
+                return View();
+            }
 
             if (Emailexist(dto) == null)
             {
-                ViewBag.Message0 = "Por favor, ingrese un correo valido";
+                ViewBag.Message = "Este Correo No Esta Registrado, Ingrese Un Correo Existente";
+                return View();
             }
 
-            if (CorrectPass(dto) == false)
+            if (CorrectPass(dto))
             {
-                ViewBag.Message1 = "Por favor, ingrese una contraseña valida";
+                return RedirectToAction("Administrador", "Home");
             }
-            return View();
+            else{
+                ViewBag.Message = "Correo y Contraseña No Coinciden.";
+            }
 
+            return View();
         }
         #endregion
 
         #region funciones
-        public bool emailvacio(LoginDTO dto)
+        public bool formatoEmail(LoginDTO dto)
         {
             bool result = false;
 
             try
             {
-                if (Regex.IsMatch(dto.email, @"^[a-zA-Z\u00f1\u00d1\u00E0-\u00FC\s]+$"))
+                if (Regex.IsMatch(dto.email, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"))
                 {
                     result = true;
                 }
@@ -173,21 +150,29 @@ namespace kaninos.Controllers
             }
         }
 
-
         public bool CorrectPass(LoginDTO dto)
         {
             bool result = false;
+            var email = Emailexist(dto);
 
-            try
+            if(email == null || dto.email == String.Empty)
             {
-                if (Emailexist(dto).pass==dto.pass)
-                {
-                    result = true;
-                }
+               return result; 
             }
-            catch (Exception)
+
+            if(formatoEmail(dto))
             {
-                result = false;
+                try
+                {
+                    if (email.pass == dto.pass)
+                    {
+                        result = true;
+                    }
+                }
+                catch (Exception)
+                {
+                    result = false;
+                }
             }
 
             return result;
