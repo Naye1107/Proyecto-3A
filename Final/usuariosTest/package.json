@@ -1,0 +1,18 @@
+{
+  "name": "usuariostest",
+  "version": "1.0.0",
+  "description": "test de vista al usuario de kaninos con cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "cypress:open": "cypress open"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "kaninos",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^9.1.0"
+  }
+}

@@ -93,7 +93,7 @@ namespace kaninos.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(LoginDTO dto)
         {
-            if (formatoEmail(dto))
+            if (!formatoEmail(dto))
             {
                 ViewBag.Message = "Por favor, ingrese un correo valido";
                 return View();
