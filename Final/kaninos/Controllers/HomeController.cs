@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using kaninos.Models;
 using kaninos.Data;
 using kaninos.Entities;
+using kaninos.Models;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Hosting;
 
 namespace kaninos.Controllers
 {
@@ -60,10 +56,22 @@ namespace kaninos.Controllers
                 created_date = DateTime.Now,
                 modified_date = null
             };
+          var existecorreo =
+                _dbContext.Logins.Where(Q => Q.email == dto.email).FirstOrDefault();
+
+            if (existecorreo == null)
+            {
+                _dbContext.Logins.Add(login);
+                _dbContext.SaveChanges();
+            }
+            else {
+                dto.id_log = -1;
+            }
+
             _dbContext.Logins.Add(login);
             _dbContext.SaveChanges();
 
-            return RedirectToAction("Login");
+            return RedirectToAction("Login","Home",dto);
         }
 
         public IActionResult Noticias()
@@ -96,24 +104,27 @@ namespace kaninos.Controllers
             if (!formatoEmail(dto))
             {
                 ViewBag.Message = "Por favor, ingrese un correo valido";
-                return View();
+                dto.id_log = 0;
             }
 
             if (Emailexist(dto) == null)
             {
                 ViewBag.Message = "Este Correo No Esta Registrado, Ingrese Un Correo Existente";
-                return View();
+                dto.id_log = 0;
             }
 
             if (CorrectPass(dto))
             {
                 return RedirectToAction("Administrador", "Home");
+
             }
-            else{
+            else
+            {
                 ViewBag.Message = "Correo y Contraseña No Coinciden.";
+                dto.id_log = 0;
             }
 
-            return View();
+            return View(dto);
         }
         #endregion
 
@@ -155,12 +166,12 @@ namespace kaninos.Controllers
             bool result = false;
             var email = Emailexist(dto);
 
-            if(email == null || dto.email == String.Empty)
+            if (email == null || dto.email == String.Empty)
             {
-               return result; 
+                return result;
             }
 
-            if(formatoEmail(dto))
+            if (formatoEmail(dto))
             {
                 try
                 {
@@ -178,6 +189,6 @@ namespace kaninos.Controllers
             return result;
         }
         #endregion
-      
+
     }
 }
