@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -35,7 +35,7 @@ namespace KaninosTest
             //act
             HomeController controller = new HomeController(dbContext);
             var result = controller.Emailexist(dto);
-        
+
             //assert
             Assert.IsNull(result);
         }
@@ -54,7 +54,7 @@ namespace KaninosTest
             //act
             HomeController controller = new HomeController(dbContext);
             var result = controller.formatoEmail(dto);
-        
+
             //assert
             Assert.AreEqual(expected, result);
         }
@@ -73,9 +73,52 @@ namespace KaninosTest
             //act
             HomeController controller = new HomeController(dbContext);
             var result = controller.CorrectPass(dto);
-        
+
             //assert
             Assert.AreEqual(expected, result);
         }
-    }
-}
+        [TestMethod]
+        public void Compruebaqueellogin_tedejepasarconloscamposllenos()
+        {
+            //arrange
+            var dto = new LoginDTO
+            {
+                id_log = 1,
+                nombre = "Eduardo",
+                email = "eduardo@abc.com",
+                pass = "D12444",
+            };
+            Microsoft.AspNetCore.Mvc.ViewResult rt = new ViewResult();
+
+            //act
+            HomeController controller = new HomeController(dbContext);
+            var result = (ViewResult)controller.Login(dto);
+            dto = (LoginDTO)result.Model;
+
+            //assert
+            Assert.AreEqual(rt, result);
+        }
+           
+        [TestMethod]
+        public void Compruebaqueellogin_tedejepasarconloscamposincorrectos()
+        {
+            var dto = new LoginDTO
+            {
+                id_log = 0,
+                nombre = "Eduardo",
+                email = "eduardo@abc.com",
+                pass = "D12444",
+            };
+            Microsoft.AspNetCore.Mvc.ViewResult rt = new ViewResult();
+
+            //act
+            HomeController controller = new HomeController(dbContext);
+            var result = (ViewResult)controller.Login(dto);
+            dto = (LoginDTO)result.Model;
+
+            //assert
+            Assert.AreEqual(-1, result);
+                }
+
+             }
+         }
